@@ -18,3 +18,7 @@ config/icon="res://Assests/icon.svg"
 [autoload]
 
 GameControl="*res://GameControl.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
