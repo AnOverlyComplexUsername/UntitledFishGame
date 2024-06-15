@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="fish" load_steps=3 format=3 uid="uid://b38s77kijwe3o"]
+
+[ext_resource type="Texture2D" uid="uid://dnpd4t20e6ykk" path="res://Assests/icon.svg" id="1_ksika"]
+[ext_resource type="Script" path="res://Scripts/FishClass.gd" id="2_5pgcb"]
+
+[resource]
+script = ExtResource("2_5pgcb")
+fishStrength = 0.25
+fishSpeed = 1.0
+sellPrice = 10
+image = ExtResource("1_ksika")
+name = "test"
+desc = "test"
+length = 1.0
+weight = 1.0
+minLength = 0.0
+maxLength = 0.0
+minWeight = 0.0
+maxWeight = 0.0

@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://c730wexgq5gqs"]
+
+[ext_resource type="Texture2D" uid="uid://dqvulxxc2qs7y" path="res://Assests/Bar(deeznuts).png" id="1_2qel4"]
+[ext_resource type="Script" path="res://Scripts/FishingMinigame.gd" id="1_ojqc6"]
+[ext_resource type="Texture2D" uid="uid://cgek5jfsywx75" path="res://Assests/2ndbar.png" id="1_pn10d"]
+[ext_resource type="Script" path="res://GameControl.gd" id="1_wry2j"]
+[ext_resource type="Script" path="res://Scripts/FishingProgress.gd" id="2_qfykp"]
+[ext_resource type="Texture2D" uid="uid://bujrf50em3p41" path="res://Assests/hook.png" id="3_o1t0f"]
+[ext_resource type="Script" path="res://Scripts/Hook.gd" id="5_umjxk"]
+[ext_resource type="Texture2D" uid="uid://3un0pg4tx6xq" path="res://Assests/miko2.PNG" id="6_j1ujb"]
+[ext_resource type="Script" path="res://Scripts/FishObjectCollision.gd" id="8_7dckj"]
+[ext_resource type="Script" path="res://Scripts/Fish.gd" id="8_ycoko"]
+[ext_resource type="Script" path="res://Scripts/FishGeneration.gd" id="11_brpu6"]
+[ext_resource type="Resource" uid="uid://b38s77kijwe3o" path="res://Fishes/testFish.tres" id="12_uow0a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tg3cx"]
+size = Vector2(220, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lphnu"]
+size = Vector2(212, 684.8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgoi7"]
+size = Vector2(158.962, 142.229)
+
+[node name="Fishing Scene" type="Node"]
+script = ExtResource("1_wry2j")
+
+[node name="FishingMinigame" type="Node2D" parent="."]
+position = Vector2(66, 66)
+script = ExtResource("1_ojqc6")
+
+[node name="ProgressBar" type="ProgressBar" parent="FishingMinigame"]
+offset_left = 496.0
+offset_top = -6.0
+offset_right = 552.0
+offset_bottom = 490.0
+step = 0.001
+fill_mode = 3
+script = ExtResource("2_qfykp")
+
+[node name="2Ndbar" type="Sprite2D" parent="FishingMinigame/ProgressBar"]
+position = Vector2(-75, 254)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_pn10d")
+
+[node name="Bar(deeznuts)" type="Sprite2D" parent="FishingMinigame"]
+position = Vector2(421, 248)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_2qel4")
+
+[node name="Bar Collision" type="StaticBody2D" parent="FishingMinigame/Bar(deeznuts)"]
+collision_layer = 3
+
+[node name="BarBottom" type="CollisionShape2D" parent="FishingMinigame/Bar(deeznuts)/Bar Collision"]
+position = Vector2(-4, 481.5)
+shape = SubResource("RectangleShape2D_tg3cx")
+
+[node name="BarTop" type="CollisionShape2D" parent="FishingMinigame/Bar(deeznuts)/Bar Collision"]
+position = Vector2(-4, -504)
+shape = SubResource("RectangleShape2D_tg3cx")
+
+[node name="Hook" type="CharacterBody2D" parent="FishingMinigame"]
+position = Vector2(-66, -66)
+script = ExtResource("5_umjxk")
+
+[node name="HookSprite" type="Sprite2D" parent="FishingMinigame/Hook"]
+position = Vector2(487, 352.5)
+scale = Vector2(0.5, 0.391602)
+texture = ExtResource("3_o1t0f")
+
+[node name="Hook Collision" type="CollisionShape2D" parent="FishingMinigame/Hook"]
+position = Vector2(487, 484.5)
+scale = Vector2(0.5, 0.15625)
+shape = SubResource("RectangleShape2D_lphnu")
+
+[node name="Miko2" type="Sprite2D" parent="FishingMinigame"]
+position = Vector2(419, 459)
+scale = Vector2(0.239051, 0.239051)
+texture = ExtResource("6_j1ujb")
+script = ExtResource("8_ycoko")
+
+[node name="Area2D" type="Area2D" parent="FishingMinigame/Miko2" node_paths=PackedStringArray("hookObject")]
+script = ExtResource("8_7dckj")
+hookObject = NodePath("../../Hook")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingMinigame/Miko2/Area2D"]
+shape = SubResource("RectangleShape2D_bgoi7")
+
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("fishingGame")]
+offset_left = 736.0
+offset_top = 280.0
+offset_right = 1024.0
+offset_bottom = 338.0
+text = "Generate Fish"
+script = ExtResource("11_brpu6")
+commonFish = Array[Resource("res://Scripts/FishClass.gd")]([ExtResource("12_uow0a")])
+fishingGame = NodePath("../FishingMinigame")
+
+[connection signal="caught" from="FishingMinigame/ProgressBar" to="FishingMinigame" method="_on_progress_bar_caught"]
+[connection signal="caught" from="FishingMinigame/ProgressBar" to="FishingMinigame/ProgressBar" method="_on_caught"]
+[connection signal="caught" from="FishingMinigame/ProgressBar" to="Button" method="_on_progress_bar_caught"]
+[connection signal="catching" from="FishingMinigame/Hook" to="FishingMinigame/ProgressBar" method="_on_hook_catching"]
+[connection signal="caught" from="FishingMinigame/Miko2/Area2D" to="FishingMinigame/Hook" method="_on_area_2d_caught"]
+[connection signal="fishData" from="Button" to="." method="_on_button_fish_data"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
