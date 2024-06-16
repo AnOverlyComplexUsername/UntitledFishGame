@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_37qxd")
-name = ""
+name = "Test Rod"
 desc = ""
 price = 1
 hookStrength = 1.0
-hookSpeed = 1.0
+hookSpeed = 200.0
 hookVerticalSpeed = 1

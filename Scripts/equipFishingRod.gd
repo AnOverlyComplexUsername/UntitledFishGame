@@ -1,11 +1,11 @@
 extends Node
 
+@export var textLabel : Label
+@export var fishingRodAttached : fishingRod
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+signal newRod(newSpeed)
+func _on_pressed():
+	textLabel.text = "Fishing rod: " + fishingRodAttached.name
+	newRod.emit(fishingRodAttached.hookSpeed)
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c730wexgq5gqs"]
+[gd_scene load_steps=23 format=3 uid="uid://c730wexgq5gqs"]
 
 [ext_resource type="Texture2D" uid="uid://dqvulxxc2qs7y" path="res://Assests/Bar(deeznuts).png" id="1_2qel4"]
 [ext_resource type="Script" path="res://Scripts/FishingMinigame.gd" id="1_ojqc6"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dnpd4t20e6ykk" path="res://Assests/icon.svg" id="11_vlaql"]
 [ext_resource type="Resource" uid="uid://b38s77kijwe3o" path="res://Fishes/testFish.tres" id="12_uow0a"]
 [ext_resource type="Script" path="res://Scripts/equipFishingRod.gd" id="15_rkjpp"]
+[ext_resource type="Resource" uid="uid://ce4g1t1lo4xra" path="res://FishingRods/testRod.tres" id="16_6csry"]
+[ext_resource type="Resource" uid="uid://wr7u0qdruj2y" path="res://FishingRods/secondRod.tres" id="17_qr10h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tg3cx"]
 size = Vector2(220, 19)
@@ -164,7 +166,7 @@ libraries = {
 }
 script = ExtResource("11_b1gvf")
 
-[node name="Button2" type="Button" parent="CanvasLayer"]
+[node name="Button2" type="Button" parent="CanvasLayer" node_paths=PackedStringArray("textLabel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -176,6 +178,35 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Equip Test Rod"
 script = ExtResource("15_rkjpp")
+textLabel = NodePath("../Label")
+fishingRodAttached = ExtResource("16_6csry")
+
+[node name="Button3" type="Button" parent="CanvasLayer" node_paths=PackedStringArray("textLabel")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 736.0
+offset_top = 541.0
+offset_right = -128.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Equip Test Rod2"
+script = ExtResource("15_rkjpp")
+textLabel = NodePath("../Label")
+fishingRodAttached = ExtResource("17_qr10h")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 736.0
+offset_top = 102.0
+offset_right = -128.0
+offset_bottom = -434.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Current Rod: "
 
 [connection signal="caught" from="CanvasLayer/FishingMinigame/ProgressBar" to="CanvasLayer/FishingMinigame" method="_on_progress_bar_caught"]
 [connection signal="caught" from="CanvasLayer/FishingMinigame/ProgressBar" to="CanvasLayer/FishingMinigame/ProgressBar" method="_on_caught"]
@@ -186,4 +217,7 @@ script = ExtResource("15_rkjpp")
 [connection signal="fishData" from="CanvasLayer/Button" to="." method="_on_button_fish_data"]
 [connection signal="fishData" from="CanvasLayer/Button" to="CanvasLayer/FishingMinigame/Miko2" method="_on_button_fish_data"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
+[connection signal="newRod" from="CanvasLayer/Button2" to="CanvasLayer/FishingMinigame/Hook" method="_on_button_2_new_rod"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer/Button2" method="_on_pressed"]
+[connection signal="newRod" from="CanvasLayer/Button3" to="CanvasLayer/FishingMinigame/Hook" method="_on_button_3_new_rod"]
+[connection signal="pressed" from="CanvasLayer/Button3" to="CanvasLayer/Button3" method="_on_pressed"]
