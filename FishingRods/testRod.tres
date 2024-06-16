@@ -6,7 +6,7 @@
 script = ExtResource("1_37qxd")
 name = ""
 desc = ""
-price = 0
-hookStrength = 0.0
-hookSpeed = 0.0
-hookVerticalSpeed = 0
+price = 1
+hookStrength = 1.0
+hookSpeed = 1.0
+hookVerticalSpeed = 1

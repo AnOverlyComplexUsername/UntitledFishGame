@@ -16,16 +16,8 @@ enum sizeClass {Small, Average, Large} # subdivided into different multplier ran
 @export var image: Texture
 @export var name: String
 @export var desc: String
-@export var length: float
-@export var weight: float
 
 @export var minLength : float
 @export var maxLength : float
 @export var minWeight : float
 @export var maxWeight : float
-
-func _set_weight(w : float):
-	weight = w
-
-func _set_length(l : float):
-	length = l

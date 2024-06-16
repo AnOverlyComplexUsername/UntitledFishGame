@@ -9,7 +9,7 @@ signal fishData(rarity, size, variation)
 #TODO: add a layer of RNG above this for junk/treasure/fish catch
 
 var fishRarities = { "Common" : 1000, 
-				 "Uncocmmon": 500,
+				 "Uncommon": 500,
 				 "Rare" : 250,
 				 "Legendary" : 50,
 				 "Mythic" : 1 }
@@ -44,9 +44,7 @@ func _process_RNG(d : Dictionary ):
 	pass
 
 func _on_pressed():
-	_process_RNG(fishRarities)
-	_process_RNG(sizeClass)
-	_process_RNG(variation)
+	fishData.emit(_process_RNG(fishRarities), _process_RNG(sizeClass), _process_RNG(variation) )
 	fishingGame.process_mode = Node.PROCESS_MODE_INHERIT
 	fishingGame.show()
 

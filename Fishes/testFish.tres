@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="fish" load_steps=3 format=3 uid="uid://b38s77kijwe3o"]
+[gd_resource type="Resource" script_class="fishTemplate" load_steps=3 format=3 uid="uid://b38s77kijwe3o"]
 
 [ext_resource type="Texture2D" uid="uid://dnpd4t20e6ykk" path="res://Assests/icon.svg" id="1_ksika"]
-[ext_resource type="Script" path="res://Scripts/FishClass.gd" id="2_5pgcb"]
+[ext_resource type="Script" path="res://Scripts/FishTemplate.gd" id="2_hc2v4"]
 
 [resource]
-script = ExtResource("2_5pgcb")
+script = ExtResource("2_hc2v4")
 fishStrength = 0.25
 fishSpeed = 1.0
 sellPrice = 10
@@ -13,7 +13,7 @@ name = "test"
 desc = "test"
 length = 1.0
 weight = 1.0
-minLength = 0.0
-maxLength = 0.0
-minWeight = 0.0
-maxWeight = 0.0
+minLength = 1.0
+maxLength = 10.0
+minWeight = 1.0
+maxWeight = 10.0
