@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=3 uid="uid://drnny7piu6sab"]
+
+[ext_resource type="Texture2D" uid="uid://cicf7e5ph225v" path="res://Assests/IMG_20240612_163431343.jpg" id="1_0fmu7"]
+[ext_resource type="Texture2D" uid="uid://be14q7d8uyds5" path="res://Assests/slice1.png" id="2_nifbr"]
+[ext_resource type="Texture2D" uid="uid://bf5pdqcyvu0qe" path="res://Assests/SelectSlice.png" id="3_urv2y"]
+[ext_resource type="BitMap" uid="uid://bf7e8iioyn8j7" path="res://Assests/bitmapTest.png" id="4_hfyuy"]
+[ext_resource type="Script" path="res://TestFishingMenu.gd" id="5_m350i"]
+[ext_resource type="Texture2D" uid="uid://b180g77soao58" path="res://Assests/fishingHook.png" id="6_y1201"]
+[ext_resource type="Texture2D" uid="uid://7eegp823xw4g" path="res://Assests/fishingHookSelected.png" id="7_foo85"]
+[ext_resource type="BitMap" uid="uid://c2mifbhrkqrhn" path="res://Assests/fishingHookSelectedBitmap.png" id="7_phj3t"]
+[ext_resource type="PackedScene" uid="uid://c730wexgq5gqs" path="res://TestScene.tscn" id="9_02p1c"]
+
+[node name="FishingScene" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Img20240612163431343" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(578, 290)
+scale = Vector2(0.287333, 0.258667)
+texture = ExtResource("1_0fmu7")
+metadata/_edit_lock_ = true
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 661.0
+offset_top = 385.0
+offset_right = 1196.0
+offset_bottom = 1317.0
+scale = Vector2(0.285869, 0.285869)
+texture_normal = ExtResource("2_nifbr")
+texture_hover = ExtResource("3_urv2y")
+texture_click_mask = ExtResource("4_hfyuy")
+metadata/_edit_use_anchors_ = true
+
+[node name="fishingGameButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 523.0
+offset_top = 136.0
+offset_right = 879.0
+offset_bottom = 1222.0
+scale = Vector2(0.276859, 0.260794)
+texture_normal = ExtResource("6_y1201")
+texture_hover = ExtResource("7_foo85")
+texture_click_mask = ExtResource("7_phj3t")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 253.0
+offset_top = 90.0
+offset_right = 944.0
+offset_bottom = 539.0
+script = ExtResource("5_m350i")
+
+[node name="outOfBounds" type="TextureButton" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -250.0
+offset_top = -88.0
+offset_right = 900.0
+offset_bottom = 588.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -20.0
+offset_right = 711.0
+offset_bottom = 449.0
+tooltip_text = "
+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 38.0
+offset_right = 692.0
+offset_bottom = 277.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="CanvasLayer/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="CanvasLayer/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="CanvasLayer/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="CanvasLayer/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="CanvasLayer/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="CanvasLayer/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Fishing Scene" parent="CanvasLayer" instance=ExtResource("9_02p1c")]
+
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="CanvasLayer/Control" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/fishingGameButton" to="CanvasLayer/Fishing Scene" method="_on_fishing_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/outOfBounds" to="CanvasLayer/Control" method="_on_out_of_bounds_pressed"]

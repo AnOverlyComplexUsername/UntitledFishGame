@@ -17,7 +17,7 @@ config/icon="res://Assests/icon.svg"
 
 [autoload]
 
-GameControl="*res://GameControl.gd"
+GameControl="*res://Scripts/GameControl.gd"
 
 [editor_plugins]
 
