@@ -7,8 +7,8 @@ signal catching(speed);
 @export var fallSpeed: float = 2
 
 var acceleration : float = 2; #how fast the hook accelerates when button is being held
-var catchingSpeed : float = 0.25 #how fast the fishing progress bar fills (will change baseed on fishing rod equiped)
-
+var catchingSpeed : float = 4 #how fast the fishing progress bar fills (will change baseed on fishing rod equiped)
+#default 0.25
 func _physics_process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		position.y += -speed * delta * acceleration

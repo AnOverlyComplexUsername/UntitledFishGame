@@ -10,7 +10,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_button_fish_data(rarity, size, variation):
-	
+	#TODO: replace this with recieving the _chosenFish method or something 
 	pass # Replace with function body.
 
 

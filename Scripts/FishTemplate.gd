@@ -1,12 +1,6 @@
 extends Resource
 class_name fishTemplate
 
-#Cosmetic and gameplay info; rarity/size will effect strength/speed multipliers
-enum variation {Golden, Holographic, None}
-enum rarity {Common, Uncommon, Rare, Legendary, Mythic}
-enum sizeClass {Small, Average, Large} # subdivided into different multplier ranges chosen at random; 
-#will effect weight/length/sellprice/ and strength & speed 
-
 #effets fishing gameplay
 @export var fishStrength : float
 @export var fishSpeed : float

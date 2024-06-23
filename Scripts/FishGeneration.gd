@@ -1,11 +1,16 @@
 extends Button
 
 signal fishData(rarity, size, variation)
+signal fishChosen(fish : inventoryFish)
 
 @export var commonFish : Array[fishTemplate]
-@export var uncommonFish : Array 
+@export var uncommonFish : Array[fishTemplate]
 @export var fishingGame : Node2D
 
+#current fish stuff
+var fishRarity : String 
+var fishSize : String
+var fishVariation : String
 #TODO: add a layer of RNG above this for junk/treasure/fish catch
 
 var fishRarities = { "Common" : 1000, 
@@ -42,14 +47,31 @@ func _process_RNG(d : Dictionary ):
 		else:
 			ranNum -= d[n]
 	pass
+	
+#returns an inventoryFish based on current rarity, size, and variation
+func _create_fish(fishTemplates : Array[fishTemplate]) -> inventoryFish:
+	rng.randomize()
+	var chosenFish = fishTemplates[rng.randi_range(0,fishTemplates.size() - 1)]
+	return inventoryFish.new(chosenFish, fishSize, fishRarity, fishVariation)
 
 func _on_pressed():
-	fishData.emit(_process_RNG(fishRarities), _process_RNG(sizeClass), _process_RNG(variation) )
+	fishRarity = _process_RNG(fishRarities)
+	fishSize = _process_RNG(sizeClass)
+	fishVariation = _process_RNG(variation)
+	fishData.emit(fishRarity, fishSize, fishVariation)
 	fishingGame.process_mode = Node.PROCESS_MODE_INHERIT
 	fishingGame.show()
-
-
-
+	
 func _on_progress_bar_caught():
-	fishData.emit(_process_RNG(fishRarities), _process_RNG(sizeClass), _process_RNG(variation) )
+	rng.randomize()
+	#based on rarity, use _create_fish to randomly generate a fish from given rarity array
+	match fishRarity:
+		"Common":
+			fishChosen.emit(_create_fish(commonFish))
+		"Uncommon":
+			fishChosen.emit(_create_fish(uncommonFish))
+		#"Rare":
+			#fishChosen.emit(_create_fish(rareFish))
+		#"Legendary":
+			#fishChosen.emit(_create_fish(legendaryFish))
 	pass # Replace with function body.

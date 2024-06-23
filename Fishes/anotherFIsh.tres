@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="fishTemplate" load_steps=3 format=3 uid="uid://ddt687aoxnyni"]
+
+[ext_resource type="Texture2D" uid="uid://b180g77soao58" path="res://Assests/fishingHook.png" id="1_fl5o4"]
+[ext_resource type="Script" path="res://Scripts/FishTemplate.gd" id="2_3t4ui"]
+
+[resource]
+script = ExtResource("2_3t4ui")
+fishStrength = 0.0
+fishSpeed = 0.0
+sellPrice = 0
+image = ExtResource("1_fl5o4")
+name = "AnotherFish"
+desc = "XDDD"
+minLength = 1.0
+maxLength = 10.0
+minWeight = 1.0
+maxWeight = 10.0
