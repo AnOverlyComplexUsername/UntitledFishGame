@@ -21,8 +21,6 @@ func _physics_process(delta):
 func _on_area_2d_caught():
 	catching.emit(catchingSpeed)
 
-
-
 func _on_button_2_new_rod(newSpeed):
 	speed = newSpeed
 	pass # Replace with function body.

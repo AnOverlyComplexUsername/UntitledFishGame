@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://p83mlc5w7y3x"]
+
+[ext_resource type="PackedScene" uid="uid://drnny7piu6sab" path="res://FishingScene.tscn" id="1_smans"]
+
+[node name="Main" type="Node"]
+
+[node name="FishingScene" parent="." instance=ExtResource("1_smans")]

@@ -7,12 +7,12 @@ extends CanvasLayer
 func _ready():
 	self.hide()
 	self.process_mode = Node.PROCESS_MODE_DISABLED
-	pass # Replace with function body.
-
-func _on_button_fish_data(rarity, size, variation):
-	pass # Replace with function body.
 
 func _on_fishing_scene_game_activated():
 	self.show()
 	self.process_mode = Node.PROCESS_MODE_INHERIT
-	pass # Replace with function body.
+
+func _on_popup_animation_animation_finished(anim_name):
+	if anim_name == "caughtPopupClose":
+		self.hide()
+		self.process_mode = Node.PROCESS_MODE_DISABLED

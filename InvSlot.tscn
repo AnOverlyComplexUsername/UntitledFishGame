@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6f1fc6rb5m0w"]
+
+[ext_resource type="Script" path="res://InvSlot.gd" id="1_k253f"]
+[ext_resource type="Texture2D" uid="uid://dnpd4t20e6ykk" path="res://Assests/icon.svg" id="1_kpi52"]
+
+[node name="InvSlot" type="Panel"]
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = -1
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_k253f")
+
+[node name="itemIcon" type="Sprite2D" parent="."]
+position = Vector2(1.5, 1.5)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_kpi52")
+centered = false

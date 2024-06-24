@@ -1,12 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://c730wexgq5gqs"]
+[gd_scene load_steps=26 format=3 uid="uid://c730wexgq5gqs"]
 
 [ext_resource type="Texture2D" uid="uid://dqvulxxc2qs7y" path="res://Assests/Bar(deeznuts).png" id="1_2qel4"]
-[ext_resource type="Script" path="res://Scripts/FishingMinigame.gd" id="1_ojqc6"]
 [ext_resource type="Texture2D" uid="uid://cgek5jfsywx75" path="res://Assests/2ndbar.png" id="1_pn10d"]
 [ext_resource type="Script" path="res://Scripts/GameControl.gd" id="1_wry2j"]
 [ext_resource type="Script" path="res://Scripts/FishingProgress.gd" id="2_qfykp"]
 [ext_resource type="Texture2D" uid="uid://bujrf50em3p41" path="res://Assests/hook.png" id="3_o1t0f"]
 [ext_resource type="Script" path="res://CanvasLayerTest.gd" id="4_to111"]
+[ext_resource type="Script" path="res://FishingMinigame.gd" id="5_s82sf"]
 [ext_resource type="Script" path="res://Scripts/Hook.gd" id="5_umjxk"]
 [ext_resource type="Texture2D" uid="uid://3un0pg4tx6xq" path="res://Assests/miko2.PNG" id="6_j1ujb"]
 [ext_resource type="Script" path="res://Scripts/FishObjectCollision.gd" id="8_7dckj"]
@@ -40,7 +40,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(683, -0.25, 0, 0.25, 0, 139, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(683, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
 tracks/1/type = "value"
@@ -56,14 +56,41 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_hadlo"]
+resource_name = "caughtPopupClose"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(150, -0.25, 0, 0.25, 0, 683, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sbh6o"]
 _data = {
-"caughtPopup": SubResource("Animation_medv4")
+"caughtPopup": SubResource("Animation_medv4"),
+"caughtPopupClose": SubResource("Animation_hadlo")
 }
 
 [node name="Fishing Scene" type="Node2D"]
 script = ExtResource("1_wry2j")
-fishInventory = Array[Resource("res://Scripts/FishTemplate.gd")]([null, null])
 fishingRodInventory = Array[Resource("res://Scripts/FishingRodClass.gd")]([ExtResource("17_qr10h"), ExtResource("16_6csry")])
 
 [node name="CanvasLayerTest" type="CanvasLayer" parent="."]
@@ -71,16 +98,20 @@ follow_viewport_enabled = true
 script = ExtResource("4_to111")
 
 [node name="Panel" type="Panel" parent="CanvasLayerTest"]
-offset_left = 43.0
-offset_top = 41.0
-offset_right = 1087.0
-offset_bottom = 631.0
-metadata/_edit_use_anchors_ = true
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.063
+anchor_right = 0.944
+anchor_bottom = 0.974
+offset_left = 0.375999
+offset_top = 0.175999
+offset_right = -0.488037
+offset_bottom = -0.152039
 
 [node name="FishingMinigame" type="Node2D" parent="CanvasLayerTest"]
 visible = false
 position = Vector2(66, 66)
-script = ExtResource("1_ojqc6")
+script = ExtResource("5_s82sf")
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayerTest/FishingMinigame"]
 offset_left = 496.0
@@ -139,14 +170,16 @@ hookObject = NodePath("../../Hook")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayerTest/FishingMinigame/Miko2/Area2D"]
 shape = SubResource("RectangleShape2D_bgoi7")
 
-[node name="Button" type="Button" parent="CanvasLayerTest" node_paths=PackedStringArray("fishingGame")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 736.0
-offset_top = 280.0
-offset_right = -128.0
-offset_bottom = -310.0
+[node name="FishGeneration" type="Button" parent="CanvasLayerTest" node_paths=PackedStringArray("fishingGame")]
+anchors_preset = -1
+anchor_left = 0.639
+anchor_top = 0.432
+anchor_right = 0.861
+anchor_bottom = 0.551
+offset_left = -0.128052
+offset_top = 0.0639954
+offset_right = 0.12793
+offset_bottom = -0.0480042
 grow_horizontal = 2
 grow_vertical = 2
 text = "Generate Fish"
@@ -154,7 +187,6 @@ script = ExtResource("11_brpu6")
 commonFish = Array[Resource("res://Scripts/FishTemplate.gd")]([ExtResource("12_uow0a")])
 uncommonFish = Array[Resource("res://Scripts/FishTemplate.gd")]([ExtResource("16_ddruf")])
 fishingGame = NodePath("../FishingMinigame")
-metadata/_edit_use_anchors_ = true
 
 [node name="PopupAnimation" type="AnimationPlayer" parent="CanvasLayerTest" node_paths=PackedStringArray("popupImage")]
 root_node = NodePath("../CaughtPopup")
@@ -164,63 +196,56 @@ libraries = {
 script = ExtResource("11_b1gvf")
 popupImage = NodePath("../CaughtPopup/TextureRect")
 
-[node name="Button2" type="Button" parent="CanvasLayerTest" node_paths=PackedStringArray("textLabel")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 736.0
-offset_top = 417.0
-offset_right = -128.0
-offset_bottom = -173.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="EquipRod1" type="Button" parent="CanvasLayerTest" node_paths=PackedStringArray("textLabel")]
+anchors_preset = -1
+anchor_left = 0.639
+anchor_top = 0.63
+anchor_right = 0.861
+anchor_bottom = 0.724
+offset_left = -0.128052
+offset_top = -0.240021
+offset_right = 0.12793
+offset_bottom = -0.152039
 text = "Equip Test Rod"
 script = ExtResource("15_rkjpp")
 textLabel = NodePath("../Label")
 fishingRodAttached = ExtResource("16_6csry")
-metadata/_edit_use_anchors_ = true
 
-[node name="Button3" type="Button" parent="CanvasLayerTest" node_paths=PackedStringArray("textLabel")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 736.0
-offset_top = 541.0
-offset_right = -128.0
-offset_bottom = -49.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="EquipRod2" type="Button" parent="CanvasLayerTest" node_paths=PackedStringArray("textLabel")]
+anchors_preset = -1
+anchor_left = 0.639
+anchor_top = 0.798
+anchor_right = 0.861
+anchor_bottom = 0.912
+offset_left = -0.128052
+offset_top = -0.104004
+offset_right = 0.12793
+offset_bottom = 0.0239868
 text = "Equip Test Rod2"
 script = ExtResource("15_rkjpp")
 textLabel = NodePath("../Label")
 fishingRodAttached = ExtResource("17_qr10h")
-metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="CanvasLayerTest"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = 736.0
 offset_top = 102.0
-offset_right = -128.0
-offset_bottom = -434.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 927.0
+offset_bottom = 175.0
 text = "Current Rod: "
-metadata/_edit_use_anchors_ = true
 
 [node name="CaughtPopup" type="AspectRatioContainer" parent="CanvasLayerTest"]
 modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 247.0
-offset_top = 683.0
-offset_right = -247.0
-offset_bottom = 405.0
+anchors_preset = -1
+anchor_left = 0.308
+anchor_top = 0.223
+anchor_right = 0.692
+anchor_bottom = 0.924
+offset_left = 0.18396
+offset_top = 538.496
+offset_right = 0.18396
+offset_bottom = 538.496
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayerTest/CaughtPopup"]
 layout_mode = 2
@@ -230,14 +255,18 @@ expand_mode = 1
 [connection signal="gameActivated" from="." to="CanvasLayerTest" method="_on_fishing_scene_game_activated"]
 [connection signal="caught" from="CanvasLayerTest/FishingMinigame/ProgressBar" to="CanvasLayerTest/FishingMinigame" method="_on_progress_bar_caught"]
 [connection signal="caught" from="CanvasLayerTest/FishingMinigame/ProgressBar" to="CanvasLayerTest/FishingMinigame/ProgressBar" method="_on_caught"]
-[connection signal="caught" from="CanvasLayerTest/FishingMinigame/ProgressBar" to="CanvasLayerTest/Button" method="_on_progress_bar_caught"]
+[connection signal="caught" from="CanvasLayerTest/FishingMinigame/ProgressBar" to="CanvasLayerTest/FishGeneration" method="_on_progress_bar_caught"]
 [connection signal="catching" from="CanvasLayerTest/FishingMinigame/Hook" to="CanvasLayerTest/FishingMinigame/ProgressBar" method="_on_hook_catching"]
 [connection signal="caught" from="CanvasLayerTest/FishingMinigame/Miko2/Area2D" to="CanvasLayerTest/FishingMinigame/Hook" method="_on_area_2d_caught"]
-[connection signal="fishChosen" from="CanvasLayerTest/Button" to="CanvasLayerTest/PopupAnimation" method="_on_button_fish_chosen"]
-[connection signal="fishData" from="CanvasLayerTest/Button" to="." method="_on_button_fish_data"]
-[connection signal="fishData" from="CanvasLayerTest/Button" to="CanvasLayerTest/FishingMinigame/Miko2" method="_on_button_fish_data"]
-[connection signal="pressed" from="CanvasLayerTest/Button" to="CanvasLayerTest/Button" method="_on_pressed"]
-[connection signal="newRod" from="CanvasLayerTest/Button2" to="CanvasLayerTest/FishingMinigame/Hook" method="_on_button_2_new_rod"]
-[connection signal="pressed" from="CanvasLayerTest/Button2" to="CanvasLayerTest/Button2" method="_on_pressed"]
-[connection signal="newRod" from="CanvasLayerTest/Button3" to="CanvasLayerTest/FishingMinigame/Hook" method="_on_button_3_new_rod"]
-[connection signal="pressed" from="CanvasLayerTest/Button3" to="CanvasLayerTest/Button3" method="_on_pressed"]
+[connection signal="fishChosen" from="CanvasLayerTest/FishGeneration" to="." method="_on_fish_generation_fish_chosen"]
+[connection signal="fishChosen" from="CanvasLayerTest/FishGeneration" to="CanvasLayerTest" method="_on_fish_generation_fish_chosen"]
+[connection signal="fishChosen" from="CanvasLayerTest/FishGeneration" to="CanvasLayerTest/PopupAnimation" method="_on_button_fish_chosen"]
+[connection signal="fishData" from="CanvasLayerTest/FishGeneration" to="CanvasLayerTest/FishingMinigame/Miko2" method="_on_button_fish_data"]
+[connection signal="pressed" from="CanvasLayerTest/FishGeneration" to="CanvasLayerTest/FishingMinigame" method="_on_fish_generation_pressed"]
+[connection signal="pressed" from="CanvasLayerTest/FishGeneration" to="CanvasLayerTest/FishGeneration" method="_on_pressed"]
+[connection signal="animation_finished" from="CanvasLayerTest/PopupAnimation" to="CanvasLayerTest" method="_on_popup_animation_animation_finished"]
+[connection signal="animation_finished" from="CanvasLayerTest/PopupAnimation" to="CanvasLayerTest/PopupAnimation" method="_on_animation_finished"]
+[connection signal="newRod" from="CanvasLayerTest/EquipRod1" to="CanvasLayerTest/FishingMinigame/Hook" method="_on_button_2_new_rod"]
+[connection signal="pressed" from="CanvasLayerTest/EquipRod1" to="CanvasLayerTest/EquipRod1" method="_on_pressed"]
+[connection signal="newRod" from="CanvasLayerTest/EquipRod2" to="CanvasLayerTest/FishingMinigame/Hook" method="_on_button_3_new_rod"]
+[connection signal="pressed" from="CanvasLayerTest/EquipRod2" to="CanvasLayerTest/EquipRod2" method="_on_pressed"]
