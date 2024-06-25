@@ -7,8 +7,10 @@
 [node name="Main" type="Node"]
 
 [node name="DockScene" parent="." instance=ExtResource("1_smans")]
+visible = false
 
 [node name="FishingGame" parent="." instance=ExtResource("3_rorct")]
+visible = false
 
 [node name="FishInventory" parent="." instance=ExtResource("1_8bf2e")]
 visible = false
