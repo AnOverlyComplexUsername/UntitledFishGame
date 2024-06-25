@@ -7,7 +7,7 @@ func _ready():
 	self.hide()
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("inv_open"): #closes and opens inv UI
 		if self.visible:
 			self.hide()
@@ -20,6 +20,6 @@ func _add_item(fish : inventoryFish):
 			invSlots[i].updateItem(fish)
 			break
 
-func _on_fishing_scene_fish_added(fish):
+func _on_fishing_game_fish_added(fish):
 	_add_item(fish)
 	pass # Replace with function body.

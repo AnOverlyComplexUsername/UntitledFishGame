@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://drnny7piu6sab"]
+[gd_scene load_steps=10 format=3 uid="uid://drnny7piu6sab"]
 
 [ext_resource type="Texture2D" uid="uid://cicf7e5ph225v" path="res://Assests/IMG_20240612_163431343.jpg" id="1_0fmu7"]
+[ext_resource type="Script" path="res://DockScene.gd" id="1_hef3q"]
 [ext_resource type="Texture2D" uid="uid://be14q7d8uyds5" path="res://Assests/slice1.png" id="2_nifbr"]
 [ext_resource type="Texture2D" uid="uid://bf5pdqcyvu0qe" path="res://Assests/SelectSlice.png" id="3_urv2y"]
 [ext_resource type="BitMap" uid="uid://bf7e8iioyn8j7" path="res://Assests/bitmapTest.png" id="4_hfyuy"]
@@ -8,10 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://b180g77soao58" path="res://Assests/fishingHook.png" id="6_y1201"]
 [ext_resource type="Texture2D" uid="uid://7eegp823xw4g" path="res://Assests/fishingHookSelected.png" id="7_foo85"]
 [ext_resource type="BitMap" uid="uid://c2mifbhrkqrhn" path="res://Assests/fishingHookSelectedBitmap.png" id="7_phj3t"]
-[ext_resource type="PackedScene" uid="uid://c730wexgq5gqs" path="res://TestScene.tscn" id="9_02p1c"]
-[ext_resource type="PackedScene" uid="uid://dprqao2ougeep" path="res://fish_inventory.tscn" id="10_7iwtj"]
 
-[node name="FishingScene" type="Node2D"]
+[node name="DockScene" type="Node2D"]
+script = ExtResource("1_hef3q")
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(578, 290)
@@ -44,11 +44,17 @@ metadata/_edit_use_anchors_ = true
 [node name="Fishing rod menu" type="Control" parent="."]
 visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_left = 253.0
-offset_top = 90.0
-offset_right = 944.0
-offset_bottom = 539.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 229.0
+offset_top = 102.0
+offset_right = 920.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("5_m350i")
 
 [node name="outOfBounds" type="TextureButton" parent="Fishing rod menu"]
@@ -131,11 +137,6 @@ layout_mode = 2
 text = "Test"
 horizontal_alignment = 1
 
-[node name="Fishing Scene" parent="." instance=ExtResource("9_02p1c")]
-
-[node name="FishInventory" parent="." instance=ExtResource("10_7iwtj")]
-
 [connection signal="pressed" from="TextureButton" to="Fishing rod menu" method="_on_texture_button_pressed"]
-[connection signal="pressed" from="fishingGameButton" to="Fishing Scene" method="_on_fishing_game_button_pressed"]
+[connection signal="pressed" from="fishingGameButton" to="." method="_on_fishing_game_button_pressed"]
 [connection signal="pressed" from="Fishing rod menu/outOfBounds" to="Fishing rod menu" method="_on_out_of_bounds_pressed"]
-[connection signal="fishAdded" from="Fishing Scene" to="FishInventory" method="_on_fishing_scene_fish_added"]

@@ -1,0 +1,267 @@
+[gd_scene load_steps=25 format=3 uid="uid://c730wexgq5gqs"]
+
+[ext_resource type="Script" path="res://Scripts/FishingGameControl.gd" id="1_7arnc"]
+[ext_resource type="Resource" uid="uid://wr7u0qdruj2y" path="res://FishingRods/secondRod.tres" id="2_w1r8y"]
+[ext_resource type="Resource" uid="uid://ce4g1t1lo4xra" path="res://FishingRods/testRod.tres" id="3_febby"]
+[ext_resource type="Script" path="res://GameVisbility.gd" id="5_26hod"]
+[ext_resource type="Script" path="res://Scripts/FishingProgress.gd" id="6_hwqa1"]
+[ext_resource type="Texture2D" uid="uid://cgek5jfsywx75" path="res://Assests/2ndbar.png" id="7_ohpre"]
+[ext_resource type="Texture2D" uid="uid://dqvulxxc2qs7y" path="res://Assests/Bar(deeznuts).png" id="8_q2ev8"]
+[ext_resource type="Script" path="res://Scripts/Hook.gd" id="9_omrk2"]
+[ext_resource type="Texture2D" uid="uid://bujrf50em3p41" path="res://Assests/hook.png" id="10_4jd0t"]
+[ext_resource type="Texture2D" uid="uid://3un0pg4tx6xq" path="res://Assests/miko2.PNG" id="11_kv8ba"]
+[ext_resource type="Script" path="res://Scripts/FishMovement.gd" id="12_5w78l"]
+[ext_resource type="Script" path="res://Scripts/FishObjectCollision.gd" id="13_4euyc"]
+[ext_resource type="Script" path="res://Scripts/FishGeneration.gd" id="14_twu6n"]
+[ext_resource type="Resource" uid="uid://b38s77kijwe3o" path="res://Fishes/testFish.tres" id="15_wthyj"]
+[ext_resource type="Resource" uid="uid://ddt687aoxnyni" path="res://Fishes/anotherFIsh.tres" id="16_x76hj"]
+[ext_resource type="Script" path="res://Scripts/caughtPopup.gd" id="17_m8rqi"]
+[ext_resource type="Script" path="res://Scripts/equipFishingRod.gd" id="18_em1o0"]
+[ext_resource type="Texture2D" uid="uid://dnpd4t20e6ykk" path="res://Assests/icon.svg" id="19_cucf6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tg3cx"]
+size = Vector2(220, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lphnu"]
+size = Vector2(212, 684.8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgoi7"]
+size = Vector2(158.962, 142.229)
+
+[sub_resource type="Animation" id="Animation_medv4"]
+resource_name = "caughtPopup"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(683, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hadlo"]
+resource_name = "caughtPopupClose"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(150, -0.25, 0, 0.25, 0, 683, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sbh6o"]
+_data = {
+"caughtPopup": SubResource("Animation_medv4"),
+"caughtPopupClose": SubResource("Animation_hadlo")
+}
+
+[node name="FishingGame" type="Node2D"]
+script = ExtResource("1_7arnc")
+fishingRodInventory = Array[Resource("res://Scripts/FishingRodClass.gd")]([ExtResource("2_w1r8y"), ExtResource("3_febby")])
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 131.0
+offset_top = 25.0
+offset_right = 1019.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FishingMinigame" type="Node2D" parent="."]
+position = Vector2(66, 66)
+script = ExtResource("5_26hod")
+
+[node name="ProgressBar" type="ProgressBar" parent="FishingMinigame"]
+offset_left = 496.0
+offset_top = -6.0
+offset_right = 552.0
+offset_bottom = 490.0
+step = 0.001
+fill_mode = 3
+script = ExtResource("6_hwqa1")
+
+[node name="2Ndbar" type="Sprite2D" parent="FishingMinigame/ProgressBar"]
+position = Vector2(-75, 254)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ohpre")
+
+[node name="Bar(deeznuts)" type="Sprite2D" parent="FishingMinigame"]
+position = Vector2(421, 248)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_q2ev8")
+
+[node name="Bar Collision" type="StaticBody2D" parent="FishingMinigame/Bar(deeznuts)"]
+collision_layer = 3
+
+[node name="BarBottom" type="CollisionShape2D" parent="FishingMinigame/Bar(deeznuts)/Bar Collision"]
+position = Vector2(-4, 481.5)
+shape = SubResource("RectangleShape2D_tg3cx")
+
+[node name="BarTop" type="CollisionShape2D" parent="FishingMinigame/Bar(deeznuts)/Bar Collision"]
+position = Vector2(-4, -504)
+shape = SubResource("RectangleShape2D_tg3cx")
+
+[node name="Hook" type="CharacterBody2D" parent="FishingMinigame"]
+position = Vector2(421, 419)
+script = ExtResource("9_omrk2")
+
+[node name="HookSprite" type="Sprite2D" parent="FishingMinigame/Hook"]
+position = Vector2(0, -132.5)
+scale = Vector2(0.5, 0.391602)
+texture = ExtResource("10_4jd0t")
+
+[node name="Hook Collision" type="CollisionShape2D" parent="FishingMinigame/Hook"]
+position = Vector2(0, -0.5)
+scale = Vector2(0.5, 0.15625)
+shape = SubResource("RectangleShape2D_lphnu")
+
+[node name="Miko2" type="Sprite2D" parent="FishingMinigame"]
+position = Vector2(419, 258)
+scale = Vector2(0.239051, 0.239051)
+texture = ExtResource("11_kv8ba")
+script = ExtResource("12_5w78l")
+
+[node name="Area2D" type="Area2D" parent="FishingMinigame/Miko2" node_paths=PackedStringArray("hookObject")]
+script = ExtResource("13_4euyc")
+hookObject = NodePath("../../Hook")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingMinigame/Miko2/Area2D"]
+shape = SubResource("RectangleShape2D_bgoi7")
+
+[node name="FishGeneration" type="Button" parent="." node_paths=PackedStringArray("fishingGame")]
+anchors_preset = -1
+anchor_left = 0.639
+anchor_top = 0.432
+anchor_right = 0.861
+anchor_bottom = 0.551
+offset_left = 736.0
+offset_top = 280.0
+offset_right = 852.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Generate Fish"
+script = ExtResource("14_twu6n")
+commonFish = Array[Resource("res://Scripts/FishTemplate.gd")]([ExtResource("15_wthyj")])
+uncommonFish = Array[Resource("res://Scripts/FishTemplate.gd")]([ExtResource("16_x76hj")])
+fishingGame = NodePath("../FishingMinigame")
+
+[node name="PopupAnimation" type="AnimationPlayer" parent="." node_paths=PackedStringArray("popupImage")]
+root_node = NodePath("../CaughtPopup")
+libraries = {
+"": SubResource("AnimationLibrary_sbh6o")
+}
+script = ExtResource("17_m8rqi")
+popupImage = NodePath("../CaughtPopup/TextureRect")
+
+[node name="EquipRod1" type="Button" parent="." node_paths=PackedStringArray("textLabel")]
+anchors_preset = -1
+anchor_left = 0.639
+anchor_top = 0.63
+anchor_right = 0.861
+anchor_bottom = 0.724
+offset_left = 736.0
+offset_top = 408.0
+offset_right = 859.0
+offset_bottom = 439.0
+text = "Equip Test Rod"
+script = ExtResource("18_em1o0")
+textLabel = NodePath("../Label")
+fishingRodAttached = ExtResource("3_febby")
+
+[node name="EquipRod2" type="Button" parent="." node_paths=PackedStringArray("textLabel")]
+anchors_preset = -1
+anchor_left = 0.639
+anchor_top = 0.798
+anchor_right = 0.861
+anchor_bottom = 0.912
+offset_left = 736.0
+offset_top = 517.0
+offset_right = 868.0
+offset_bottom = 548.0
+text = "Equip Test Rod2"
+script = ExtResource("18_em1o0")
+textLabel = NodePath("../Label")
+fishingRodAttached = ExtResource("2_w1r8y")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 736.0
+offset_top = 102.0
+offset_right = 927.0
+offset_bottom = 175.0
+text = "Current Rod: "
+
+[node name="CaughtPopup" type="AspectRatioContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.308
+anchor_top = 0.223
+anchor_right = 0.308
+anchor_bottom = 0.223
+offset_left = 350.0
+offset_top = 683.0
+offset_right = 805.0
+offset_bottom = 1090.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CaughtPopup"]
+layout_mode = 2
+texture = ExtResource("19_cucf6")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[connection signal="caught" from="FishingMinigame/ProgressBar" to="FishingMinigame" method="_on_progress_bar_caught"]
+[connection signal="caught" from="FishingMinigame/ProgressBar" to="FishingMinigame/ProgressBar" method="_on_caught"]
+[connection signal="caught" from="FishingMinigame/ProgressBar" to="FishGeneration" method="_on_progress_bar_caught"]
+[connection signal="catching" from="FishingMinigame/Hook" to="FishingMinigame/ProgressBar" method="_on_hook_catching"]
+[connection signal="caught" from="FishingMinigame/Miko2/Area2D" to="FishingMinigame/Hook" method="_on_area_2d_caught"]
+[connection signal="fishChosen" from="FishGeneration" to="." method="_on_fish_generation_fish_chosen"]
+[connection signal="fishChosen" from="FishGeneration" to="PopupAnimation" method="_on_button_fish_chosen"]
+[connection signal="fishData" from="FishGeneration" to="FishingMinigame/Miko2" method="_on_button_fish_data"]
+[connection signal="pressed" from="FishGeneration" to="FishingMinigame" method="_on_fish_generation_pressed"]
+[connection signal="pressed" from="FishGeneration" to="FishGeneration" method="_on_pressed"]
+[connection signal="animation_finished" from="PopupAnimation" to="." method="_on_popup_animation_animation_finished"]
+[connection signal="animation_finished" from="PopupAnimation" to="PopupAnimation" method="_on_animation_finished"]
+[connection signal="newRod" from="EquipRod1" to="FishingMinigame/Hook" method="_on_button_2_new_rod"]
+[connection signal="pressed" from="EquipRod1" to="EquipRod1" method="_on_pressed"]
+[connection signal="newRod" from="EquipRod2" to="FishingMinigame/Hook" method="_on_button_3_new_rod"]
+[connection signal="pressed" from="EquipRod2" to="EquipRod2" method="_on_pressed"]
