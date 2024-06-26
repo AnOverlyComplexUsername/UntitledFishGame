@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/FishingGameControl.gd" id="1_7arnc"]
 [ext_resource type="Resource" uid="uid://wr7u0qdruj2y" path="res://FishingRods/secondRod.tres" id="2_w1r8y"]
 [ext_resource type="Resource" uid="uid://ce4g1t1lo4xra" path="res://FishingRods/testRod.tres" id="3_febby"]
-[ext_resource type="Script" path="res://GameVisbility.gd" id="5_26hod"]
+[ext_resource type="Script" path="res://Scripts/GameVisbility.gd" id="4_rmhkk"]
 [ext_resource type="Script" path="res://Scripts/FishingProgress.gd" id="6_hwqa1"]
 [ext_resource type="Texture2D" uid="uid://cgek5jfsywx75" path="res://Assests/2ndbar.png" id="7_ohpre"]
 [ext_resource type="Texture2D" uid="uid://dqvulxxc2qs7y" path="res://Assests/Bar(deeznuts).png" id="8_q2ev8"]
@@ -107,7 +107,7 @@ grow_vertical = 2
 
 [node name="FishingMinigame" type="Node2D" parent="."]
 position = Vector2(66, 66)
-script = ExtResource("5_26hod")
+script = ExtResource("4_rmhkk")
 
 [node name="ProgressBar" type="ProgressBar" parent="FishingMinigame"]
 offset_left = 496.0
@@ -254,8 +254,6 @@ metadata/_edit_lock_ = true
 [connection signal="caught" from="FishingMinigame/ProgressBar" to="FishGeneration" method="_on_progress_bar_caught"]
 [connection signal="catching" from="FishingMinigame/Hook" to="FishingMinigame/ProgressBar" method="_on_hook_catching"]
 [connection signal="caught" from="FishingMinigame/Miko2/Area2D" to="FishingMinigame/Hook" method="_on_area_2d_caught"]
-[connection signal="fishChosen" from="FishGeneration" to="." method="_on_fish_generation_fish_chosen"]
-[connection signal="fishChosen" from="FishGeneration" to="PopupAnimation" method="_on_button_fish_chosen"]
 [connection signal="fishData" from="FishGeneration" to="FishingMinigame/Miko2" method="_on_button_fish_data"]
 [connection signal="pressed" from="FishGeneration" to="FishingMinigame" method="_on_fish_generation_pressed"]
 [connection signal="pressed" from="FishGeneration" to="FishGeneration" method="_on_pressed"]

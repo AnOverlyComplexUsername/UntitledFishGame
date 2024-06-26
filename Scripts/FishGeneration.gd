@@ -1,7 +1,6 @@
 extends Button
 
 signal fishData(rarity, size, variation)
-signal fishChosen(fish : inventoryFish)
 
 @export var commonFish : Array[fishTemplate]
 @export var uncommonFish : Array[fishTemplate]
@@ -23,7 +22,7 @@ var sizeClass = { "Average": 80,
 				"Small" : 15, 
 				 "Large" : 10,}
 
-
+#default rates: 90,20,5
 var variation = {"None" : 90, 
 				"Holographic" : 20,
 				"Golden" : 5}
@@ -52,7 +51,7 @@ func _process_RNG(d : Dictionary ):
 func _create_fish(fishTemplates : Array[fishTemplate]) -> inventoryFish:
 	rng.randomize()
 	var chosenFish = fishTemplates[rng.randi_range(0,fishTemplates.size() - 1)]
-	return inventoryFish.new(chosenFish, fishSize, fishRarity, fishVariation)
+	return inventoryFish.new(chosenFish, fishSize, fishVariation, fishRarity)
 
 func _on_pressed():
 	fishRarity = _process_RNG(fishRarities)
@@ -67,11 +66,10 @@ func _on_progress_bar_caught():
 	#based on rarity, use _create_fish to randomly generate a fish from given rarity array
 	match fishRarity:
 		"Common":
-			fishChosen.emit(_create_fish(commonFish))
+			GameManager.fishAdded.emit(_create_fish(commonFish))
 		"Uncommon":
-			fishChosen.emit(_create_fish(uncommonFish))
+			GameManager.fishAdded.emit(_create_fish(uncommonFish))
 		#"Rare":
 			#fishChosen.emit(_create_fish(rareFish))
 		#"Legendary":
 			#fishChosen.emit(_create_fish(legendaryFish))
-	pass # Replace with function body.

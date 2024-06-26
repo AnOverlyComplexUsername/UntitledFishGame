@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sv3sdpvqxqfm"]
+
+[ext_resource type="Script" path="res://Scripts/SellScreen.gd" id="1_ujtb2"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ujtb2")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://p83mlc5w7y3x"]
+
+[ext_resource type="PackedScene" uid="uid://drnny7piu6sab" path="res://Scenes/DockScene.tscn" id="1_14bnk"]
+[ext_resource type="PackedScene" uid="uid://c730wexgq5gqs" path="res://Scenes/FishingMinigame.tscn" id="2_grcja"]
+[ext_resource type="PackedScene" uid="uid://dprqao2ougeep" path="res://Scenes/fish_inventory.tscn" id="3_bnb2q"]
+
+[node name="Main" type="Node"]
+
+[node name="DockScene" parent="." instance=ExtResource("1_14bnk")]
+
+[node name="FishingGame" parent="." instance=ExtResource("2_grcja")]
+visible = false
+
+[node name="FishInventory" parent="." instance=ExtResource("3_bnb2q")]
+visible = false
+
+[connection signal="triggerFishingGame" from="DockScene" to="FishingGame" method="_on_dock_scene_trigger_fishing_game"]

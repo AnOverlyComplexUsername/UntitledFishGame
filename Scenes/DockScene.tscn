@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://drnny7piu6sab"]
 
 [ext_resource type="Texture2D" uid="uid://cicf7e5ph225v" path="res://Assests/IMG_20240612_163431343.jpg" id="1_0fmu7"]
-[ext_resource type="Script" path="res://DockScene.gd" id="1_hef3q"]
+[ext_resource type="Script" path="res://Scripts/DockScene.gd" id="1_hef3q"]
 [ext_resource type="Texture2D" uid="uid://be14q7d8uyds5" path="res://Assests/slice1.png" id="2_nifbr"]
 [ext_resource type="Texture2D" uid="uid://bf5pdqcyvu0qe" path="res://Assests/SelectSlice.png" id="3_urv2y"]
 [ext_resource type="BitMap" uid="uid://bf7e8iioyn8j7" path="res://Assests/bitmapTest.png" id="4_hfyuy"]
-[ext_resource type="Script" path="res://TestFishingMenu.gd" id="5_m350i"]
+[ext_resource type="Script" path="res://Scripts/TestFishingMenu.gd" id="5_m350i"]
 [ext_resource type="Texture2D" uid="uid://b180g77soao58" path="res://Assests/fishingHook.png" id="6_y1201"]
 [ext_resource type="Texture2D" uid="uid://7eegp823xw4g" path="res://Assests/fishingHookSelected.png" id="7_foo85"]
 [ext_resource type="BitMap" uid="uid://c2mifbhrkqrhn" path="res://Assests/fishingHookSelectedBitmap.png" id="7_phj3t"]

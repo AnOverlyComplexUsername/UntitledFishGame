@@ -55,6 +55,7 @@ func move(target):
 	
 	plan_move()
 
+#useless funciton for now xd
 func destroy():
 	get_parent().remove_child(self)
 	queue_free()

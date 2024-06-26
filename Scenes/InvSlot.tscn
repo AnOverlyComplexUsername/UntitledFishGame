@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6f1fc6rb5m0w"]
+
+[ext_resource type="Script" path="res://Scripts/InvSlot.gd" id="1_b64b2"]
+[ext_resource type="Texture2D" uid="uid://dnpd4t20e6ykk" path="res://Assests/icon.svg" id="2_wfsof"]
+
+[node name="InvSlot" type="Panel"]
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_b64b2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.317647)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="itemIcon" type="Sprite2D" parent="."]
+position = Vector2(1.5, 1.5)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_wfsof")
+centered = false
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

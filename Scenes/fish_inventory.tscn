@@ -1,0 +1,146 @@
+[gd_scene load_steps=4 format=3 uid="uid://dprqao2ougeep"]
+
+[ext_resource type="PackedScene" uid="uid://b6f1fc6rb5m0w" path="res://Scenes/InvSlot.tscn" id="1_8tiwj"]
+[ext_resource type="Script" path="res://Scripts/inventory_UI.gd" id="1_s35gq"]
+[ext_resource type="Texture2D" uid="uid://dnpd4t20e6ykk" path="res://Assests/icon.svg" id="3_d7cmd"]
+
+[node name="FishInventory" type="Control" node_paths=PackedStringArray("displayIcon", "displayName", "displayDesc", "displayCost")]
+visibility_layer = 7
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s35gq")
+displayIcon = NodePath("Panel/DisplayPanel/fishIcon")
+displayName = NodePath("Panel/DisplayPanel/Name")
+displayDesc = NodePath("Panel/DisplayPanel/Desc")
+displayCost = NodePath("Panel/DisplayPanel/Cost")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+anchor_left = 0.105
+anchor_top = 0.105
+anchor_right = 0.105
+anchor_bottom = 0.105
+offset_left = 0.0399933
+offset_top = -0.0400009
+offset_right = 910.04
+offset_bottom = 511.96
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel"]
+layout_mode = 1
+offset_right = 910.0
+offset_bottom = 512.0
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="Panel/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 36.0
+offset_right = -707.0
+offset_bottom = -389.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+columns = 5
+
+[node name="InvSlot1" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
+layout_mode = 2
+
+[node name="InvSlot2" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
+layout_mode = 2
+
+[node name="InvSlot3" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
+layout_mode = 2
+
+[node name="InvSlot4" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
+layout_mode = 2
+
+[node name="InvSlot5" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
+layout_mode = 2
+
+[node name="InvSlot6" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
+layout_mode = 2
+
+[node name="InvSlot7" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
+layout_mode = 2
+
+[node name="InvSlot8" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
+layout_mode = 2
+
+[node name="InvSlot9" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
+layout_mode = 2
+
+[node name="InvSlot10" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
+layout_mode = 2
+
+[node name="DisplayPanel" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 26.0
+offset_right = 871.0
+offset_bottom = 485.0
+
+[node name="Panel" type="Panel" parent="Panel/DisplayPanel"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 249.0
+offset_right = 237.0
+offset_bottom = 445.0
+
+[node name="fishIcon" type="TextureRect" parent="Panel/DisplayPanel"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 90.0
+offset_right = 205.0
+offset_bottom = 240.0
+texture = ExtResource("3_d7cmd")
+
+[node name="Name" type="Label" parent="Panel/DisplayPanel"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 10.0
+offset_right = 220.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 24
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 1
+
+[node name="Desc" type="Label" parent="Panel/DisplayPanel"]
+layout_mode = 2
+offset_left = 35.0
+offset_top = 294.0
+offset_right = 220.0
+offset_bottom = 443.0
+theme_override_font_sizes/font_size = 12
+text = "adsadafaefesaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+horizontal_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 1
+
+[node name="Cost" type="Label" parent="Panel/DisplayPanel"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 260.0
+offset_right = 220.0
+offset_bottom = 286.0
+text = "$ 99999999"
+vertical_alignment = 1
+text_overrun_behavior = 4

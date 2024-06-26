@@ -7,7 +7,7 @@
 script = ExtResource("2_hc2v4")
 fishStrength = 0.0
 fishSpeed = 0.0
-sellPrice = 0
+sellPrice = 200
 image = ExtResource("1_hljy6")
 name = "UwU"
 desc = "test description"

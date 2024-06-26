@@ -4,7 +4,6 @@ signal caught()
 
 @export var decaySpeed : float = 2
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	value = 0.0
 
@@ -18,4 +17,4 @@ func _on_hook_catching(speed):
 
 func _on_caught():
 	value = 0
-	pass # Replace with function body.
+
