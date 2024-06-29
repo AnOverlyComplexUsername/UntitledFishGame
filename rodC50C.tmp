@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcjecaxuftskr"]
+
+[ext_resource type="PackedScene" uid="uid://o4x0v8tiuvt3" path="res://fishing_rod_buy_menu.tscn" id="1_x81t2"]
+
+[node name="rodShopKeeper" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 228.0
+offset_top = 452.0
+offset_right = 454.0
+offset_bottom = 511.0
+text = "Open/Close Shop"
+
+[node name="FishingRodBuyMenu" parent="." instance=ExtResource("1_x81t2")]
+
+[connection signal="pressed" from="Button" to="FishingRodBuyMenu" method="_on_button_pressed"]

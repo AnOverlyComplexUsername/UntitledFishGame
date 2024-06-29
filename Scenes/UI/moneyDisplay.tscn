@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://by3mo5oaly1rg"]
+
+[ext_resource type="Script" path="res://moneyDisplay.gd" id="1_7fddd"]
+
+[node name="MoneyDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7fddd")
+
+[node name="Money" type="Label" parent="."]
+layout_mode = 0
+offset_right = 217.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 28
+text = "$ 99999999999999999"
+vertical_alignment = 1

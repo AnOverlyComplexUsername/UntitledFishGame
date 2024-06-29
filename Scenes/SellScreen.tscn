@@ -1,6 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://sv3sdpvqxqfm"]
+[gd_scene load_steps=4 format=3 uid="uid://sv3sdpvqxqfm"]
 
 [ext_resource type="Script" path="res://Scripts/SellScreen.gd" id="1_ujtb2"]
+[ext_resource type="PackedScene" uid="uid://by3mo5oaly1rg" path="res://Scenes/UI/moneyDisplay.tscn" id="2_tdsp2"]
+[ext_resource type="PackedScene" uid="uid://dprqao2ougeep" path="res://Scenes/UI/fish_inventory.tscn" id="3_v71e7"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ujtb2")
+
+[node name="SellButton2" type="Button" parent="."]
+offset_left = 35.0
+offset_top = 490.0
+offset_right = 366.0
+offset_bottom = 553.0
+text = "Main Scene"
+
+[node name="MoneyDisplay" parent="." instance=ExtResource("2_tdsp2")]
+
+[node name="SellMenuOpen" type="Button" parent="."]
+offset_left = 237.0
+offset_top = 421.0
+offset_right = 509.0
+offset_bottom = 456.0
+text = "Open/Close Menu"
+
+[node name="FishInventory" parent="." instance=ExtResource("3_v71e7")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="SellButton2" to="." method="_on_sell_button_2_pressed"]
+[connection signal="pressed" from="SellMenuOpen" to="FishInventory" method="_on_sell_menu_open_pressed"]

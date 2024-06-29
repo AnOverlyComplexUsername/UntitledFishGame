@@ -1,7 +1,5 @@
 extends Node2D
 
-@export var fishingRodInventory : Array[fishingRod]
-
 func _ready():
 	self.hide()
 	self.process_mode = Node.PROCESS_MODE_DISABLED

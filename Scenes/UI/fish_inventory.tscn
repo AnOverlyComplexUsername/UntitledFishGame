@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dprqao2ougeep"]
 
-[ext_resource type="PackedScene" uid="uid://b6f1fc6rb5m0w" path="res://Scenes/InvSlot.tscn" id="1_8tiwj"]
+[ext_resource type="PackedScene" uid="uid://b6f1fc6rb5m0w" path="res://Scenes/UI/InvSlot.tscn" id="1_8tiwj"]
 [ext_resource type="Script" path="res://Scripts/inventory_UI.gd" id="1_s35gq"]
 [ext_resource type="Texture2D" uid="uid://dnpd4t20e6ykk" path="res://Assests/icon.svg" id="3_d7cmd"]
 
@@ -144,3 +144,14 @@ offset_bottom = 286.0
 text = "$ 99999999"
 vertical_alignment = 1
 text_overrun_behavior = 4
+
+[node name="SellButton" type="Button" parent="Panel/DisplayPanel"]
+visible = false
+layout_mode = 0
+offset_left = 50.0
+offset_top = 367.0
+offset_right = 212.0
+offset_bottom = 414.0
+text = "Sell Current"
+
+[connection signal="pressed" from="Panel/DisplayPanel/SellButton" to="." method="_on_sell_button_pressed"]

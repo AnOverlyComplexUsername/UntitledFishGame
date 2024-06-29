@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="fishingRod" load_steps=2 format=3 uid="uid://wr7u0qdruj2y"]
+[gd_resource type="Resource" script_class="fishingRod" load_steps=3 format=3 uid="uid://wr7u0qdruj2y"]
 
 [ext_resource type="Script" path="res://Scripts/FishingRodClass.gd" id="1_3ygsy"]
+[ext_resource type="Texture2D" uid="uid://3un0pg4tx6xq" path="res://Assests/miko2.PNG" id="2_mfydk"]
 
 [resource]
 script = ExtResource("1_3ygsy")
+shopIcon = ExtResource("2_mfydk")
 name = "Second Rod"
-desc = ""
-price = 0
-hookStrength = 0.0
+desc = "testing :D"
+price = 100
+hookStrength = 1.0
 hookSpeed = 300.0
 hookVerticalSpeed = 0

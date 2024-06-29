@@ -137,6 +137,22 @@ layout_mode = 2
 text = "Test"
 horizontal_alignment = 1
 
+[node name="rodTPButton" type="Button" parent="."]
+offset_left = 22.0
+offset_top = 519.0
+offset_right = 243.0
+offset_bottom = 590.0
+text = "To buy rod :3"
+
+[node name="shopTPButton" type="Button" parent="."]
+offset_left = 22.0
+offset_top = 419.0
+offset_right = 243.0
+offset_bottom = 490.0
+text = "To sell"
+
 [connection signal="pressed" from="TextureButton" to="Fishing rod menu" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="fishingGameButton" to="." method="_on_fishing_game_button_pressed"]
 [connection signal="pressed" from="Fishing rod menu/outOfBounds" to="Fishing rod menu" method="_on_out_of_bounds_pressed"]
+[connection signal="pressed" from="rodTPButton" to="." method="_on_rod_tp_button_pressed"]
+[connection signal="pressed" from="shopTPButton" to="." method="_on_shop_tp_button_pressed"]

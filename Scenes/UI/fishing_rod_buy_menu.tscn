@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://o4x0v8tiuvt3"]
+
+[ext_resource type="PackedScene" uid="uid://dcfd1c25r7y7o" path="res://Scenes/UI/rodBuySlot.tscn" id="1_3k1x8"]
+[ext_resource type="Script" path="res://fishing_rod_buy_menu.gd" id="1_3qabc"]
+[ext_resource type="Resource" uid="uid://wr7u0qdruj2y" path="res://FishingRods/secondRod.tres" id="3_ojb6g"]
+[ext_resource type="Resource" uid="uid://ce4g1t1lo4xra" path="res://FishingRods/testRod.tres" id="4_cm0h1"]
+
+[node name="FishingRodBuyMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3qabc")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 691.0
+offset_top = 82.0
+offset_right = 1007.0
+offset_bottom = 582.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel"]
+layout_mode = 0
+offset_right = 12.0
+offset_bottom = 12.0
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/NinePatchRect"]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 316.0
+offset_bottom = 457.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/NinePatchRect/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="rodShopSlot" parent="Panel/NinePatchRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_3k1x8")]
+layout_mode = 2
+purchasableRod = ExtResource("3_ojb6g")
+
+[node name="rodShopSlot2" parent="Panel/NinePatchRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_3k1x8")]
+layout_mode = 2
+purchasableRod = ExtResource("4_cm0h1")
+
+[node name="rodShopSlot3" parent="Panel/NinePatchRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_3k1x8")]
+layout_mode = 2
+
+[node name="rodShopSlot4" parent="Panel/NinePatchRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_3k1x8")]
+layout_mode = 2
+
+[node name="rodShopSlot5" parent="Panel/NinePatchRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_3k1x8")]
+layout_mode = 2
