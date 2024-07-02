@@ -90,3 +90,10 @@ func _dialogic_signal_event(argument : String):
 		self.visible = !self.visible
 		sellButton.show()
 		displayDesc.hide()
+
+
+func _on_close_exit_pressed():
+	self.visible = !self.visible
+	sellButton.hide()
+	displayDesc.show()
+
