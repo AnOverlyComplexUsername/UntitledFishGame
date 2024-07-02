@@ -90,7 +90,6 @@ _data = {
 
 [node name="FishingGame" type="Node2D"]
 script = ExtResource("1_7arnc")
-fishingRodInventory = Array[Resource("res://Scripts/FishingRodClass.gd")]([ExtResource("2_w1r8y"), ExtResource("3_febby")])
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 8
@@ -139,9 +138,10 @@ shape = SubResource("RectangleShape2D_tg3cx")
 position = Vector2(-4, -504)
 shape = SubResource("RectangleShape2D_tg3cx")
 
-[node name="Hook" type="CharacterBody2D" parent="FishingMinigame"]
+[node name="Hook" type="CharacterBody2D" parent="FishingMinigame" node_paths=PackedStringArray("text")]
 position = Vector2(421, 419)
 script = ExtResource("9_omrk2")
+text = NodePath("../../Label")
 
 [node name="HookSprite" type="Sprite2D" parent="FishingMinigame/Hook"]
 position = Vector2(0, -132.5)
@@ -249,6 +249,7 @@ texture = ExtResource("19_cucf6")
 expand_mode = 1
 metadata/_edit_lock_ = true
 
+[connection signal="visibility_changed" from="." to="FishingMinigame/Hook" method="_on_fishing_game_visibility_changed"]
 [connection signal="caught" from="FishingMinigame/ProgressBar" to="FishingMinigame" method="_on_progress_bar_caught"]
 [connection signal="caught" from="FishingMinigame/ProgressBar" to="FishingMinigame/ProgressBar" method="_on_caught"]
 [connection signal="caught" from="FishingMinigame/ProgressBar" to="FishGeneration" method="_on_progress_bar_caught"]
@@ -261,5 +262,6 @@ metadata/_edit_lock_ = true
 [connection signal="animation_finished" from="PopupAnimation" to="PopupAnimation" method="_on_animation_finished"]
 [connection signal="newRod" from="EquipRod1" to="FishingMinigame/Hook" method="_on_button_2_new_rod"]
 [connection signal="pressed" from="EquipRod1" to="EquipRod1" method="_on_pressed"]
+[connection signal="visibility_changed" from="EquipRod1" to="." method="_on_equip_rod_1_visibility_changed"]
 [connection signal="newRod" from="EquipRod2" to="FishingMinigame/Hook" method="_on_button_3_new_rod"]
 [connection signal="pressed" from="EquipRod2" to="EquipRod2" method="_on_pressed"]

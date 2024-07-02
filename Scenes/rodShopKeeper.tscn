@@ -18,7 +18,8 @@ offset_left = 53.0
 offset_top = 539.0
 offset_right = 279.0
 offset_bottom = 598.0
-text = "Open/Close Shop"
+text = "Main Scene
+"
 
 [node name="FishingRodBuyMenu" parent="." instance=ExtResource("1_7gcji")]
 

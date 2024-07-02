@@ -8,5 +8,5 @@ name = "Test Rod"
 desc = "xd"
 price = 1
 hookStrength = 1.0
-hookSpeed = 200.0
+hookSpeed = 100
 hookVerticalSpeed = 1

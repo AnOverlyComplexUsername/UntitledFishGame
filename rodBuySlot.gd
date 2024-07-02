@@ -26,8 +26,10 @@ func _update_purchasable(): #updates button state
 	if purchased:
 		if GameManager.curRod != purchasableRod: 
 			purchaseButton.text = "Equip"
+			purchaseButton.disabled = false
 		else:
 			purchaseButton.text = "Equipped"
+			purchaseButton.disabled = true
 
 	elif purchasableRod and GameManager.money >= purchasableRod.price:
 		purchaseButton.disabled = false

@@ -61,33 +61,6 @@ columns = 5
 [node name="InvSlot1" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
 layout_mode = 2
 
-[node name="InvSlot2" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
-layout_mode = 2
-
-[node name="InvSlot3" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
-layout_mode = 2
-
-[node name="InvSlot4" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
-layout_mode = 2
-
-[node name="InvSlot5" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
-layout_mode = 2
-
-[node name="InvSlot6" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
-layout_mode = 2
-
-[node name="InvSlot7" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
-layout_mode = 2
-
-[node name="InvSlot8" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
-layout_mode = 2
-
-[node name="InvSlot9" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
-layout_mode = 2
-
-[node name="InvSlot10" parent="Panel/NinePatchRect/GridContainer" instance=ExtResource("1_8tiwj")]
-layout_mode = 2
-
 [node name="DisplayPanel" type="Panel" parent="Panel"]
 layout_mode = 0
 offset_left = 616.0

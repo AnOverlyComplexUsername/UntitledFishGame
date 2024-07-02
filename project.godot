@@ -29,10 +29,11 @@ directories/dch_directory={
 "shopNPC": "res://shopNPC.dch"
 }
 directories/dtl_directory={
+"rodShop": "res://rodShop.dtl",
 "shopKeeper": "res://shopKeeper.dtl"
 }
-layout/style_list=["res://New_File.tres"]
-layout/default_style="res://New_File.tres"
+layout/style_list=[""]
+layout/default_style=""
 
 [editor_plugins]
 

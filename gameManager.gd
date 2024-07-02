@@ -3,7 +3,7 @@ extends Node
 var fishInventory : Array[inventoryFish]
 var invSizeLimit : int = 10
 var rodInventory :  Array[fishingRod]
-var curRod : fishingRod 
+var curRod : fishingRod #default rod as failsafe
 
 var money : int = 0 
 

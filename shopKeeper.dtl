@@ -1,2 +1,7 @@
 join shopNPC 1
 shopNPC: fuck you >\:(
+shopNPC: Use shop >\:)
+- Yes
+	[signal arg="_open_sell"]
+- No
+[end_timeline]

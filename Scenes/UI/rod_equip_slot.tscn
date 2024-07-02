@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh6j3ea3ce5jh"]
+
+[ext_resource type="Texture2D" uid="uid://dnpd4t20e6ykk" path="res://Assests/icon.svg" id="1_jgmkj"]
+
+[node name="rodEquipSlot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 147.0
+offset_bottom = 324.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 17.0
+offset_right = 194.0
+offset_bottom = 173.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_jgmkj")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 116.0
+offset_right = 127.0
+offset_bottom = 310.0
+theme_override_font_sizes/font_size = 12
+text = "love blah blah blah"
+autowrap_mode = 2

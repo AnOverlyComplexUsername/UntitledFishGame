@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://drnny7piu6sab"]
+[gd_scene load_steps=11 format=3 uid="uid://drnny7piu6sab"]
 
 [ext_resource type="Texture2D" uid="uid://cicf7e5ph225v" path="res://Assests/IMG_20240612_163431343.jpg" id="1_0fmu7"]
 [ext_resource type="Script" path="res://Scripts/DockScene.gd" id="1_hef3q"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b180g77soao58" path="res://Assests/fishingHook.png" id="6_y1201"]
 [ext_resource type="Texture2D" uid="uid://7eegp823xw4g" path="res://Assests/fishingHookSelected.png" id="7_foo85"]
 [ext_resource type="BitMap" uid="uid://c2mifbhrkqrhn" path="res://Assests/fishingHookSelectedBitmap.png" id="7_phj3t"]
+[ext_resource type="PackedScene" uid="uid://dh6j3ea3ce5jh" path="res://Scenes/UI/rod_equip_slot.tscn" id="10_lmspx"]
 
 [node name="DockScene" type="Node2D"]
 script = ExtResource("1_hef3q")
@@ -42,7 +43,6 @@ texture_click_mask = ExtResource("7_phj3t")
 metadata/_edit_use_anchors_ = true
 
 [node name="Fishing rod menu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,65 +77,20 @@ layout_mode = 0
 offset_left = 14.0
 offset_top = 38.0
 offset_right = 692.0
-offset_bottom = 277.0
+offset_bottom = 417.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Fishing rod menu/ScrollContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="Fishing rod menu/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 180
+
+[node name="rodEquipSlot" parent="Fishing rod menu/ScrollContainer/VBoxContainer" instance=ExtResource("10_lmspx")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Fishing rod menu/ScrollContainer/VBoxContainer"]
+[node name="rodEquipSlot2" parent="Fishing rod menu/ScrollContainer/VBoxContainer" instance=ExtResource("10_lmspx")]
 layout_mode = 2
-text = "Test"
-horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Fishing rod menu/ScrollContainer/VBoxContainer"]
+[node name="rodEquipSlot3" parent="Fishing rod menu/ScrollContainer/VBoxContainer" instance=ExtResource("10_lmspx")]
 layout_mode = 2
-text = "Test"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="Fishing rod menu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="Fishing rod menu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-horizontal_alignment = 1
-
-[node name="Label5" type="Label" parent="Fishing rod menu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-horizontal_alignment = 1
-
-[node name="Label6" type="Label" parent="Fishing rod menu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-horizontal_alignment = 1
-
-[node name="Label7" type="Label" parent="Fishing rod menu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-horizontal_alignment = 1
-
-[node name="Label8" type="Label" parent="Fishing rod menu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-horizontal_alignment = 1
-
-[node name="Label9" type="Label" parent="Fishing rod menu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-horizontal_alignment = 1
-
-[node name="Label10" type="Label" parent="Fishing rod menu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-horizontal_alignment = 1
-
-[node name="Label11" type="Label" parent="Fishing rod menu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
-horizontal_alignment = 1
 
 [node name="rodTPButton" type="Button" parent="."]
 offset_left = 22.0

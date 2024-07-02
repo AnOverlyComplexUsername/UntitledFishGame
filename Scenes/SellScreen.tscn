@@ -16,12 +16,13 @@ text = "Main Scene"
 
 [node name="MoneyDisplay" parent="." instance=ExtResource("2_tdsp2")]
 
-[node name="SellMenuOpen" type="Button" parent="."]
+[node name="DialogOpen" type="Button" parent="."]
 offset_left = 237.0
 offset_top = 421.0
 offset_right = 509.0
 offset_bottom = 456.0
-text = "Open/Close Menu"
+text = "Trigger Dialog
+"
 
 [node name="FishInventory" parent="." instance=ExtResource("3_v71e7")]
 anchors_preset = 0
@@ -37,4 +38,4 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [connection signal="pressed" from="SellButton2" to="." method="_on_sell_button_2_pressed"]
-[connection signal="pressed" from="SellMenuOpen" to="FishInventory" method="_on_sell_menu_open_pressed"]
+[connection signal="pressed" from="DialogOpen" to="." method="_on_sell_menu_open_pressed"]

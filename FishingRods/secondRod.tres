@@ -10,5 +10,5 @@ name = "Second Rod"
 desc = "testing :D"
 price = 100
 hookStrength = 1.0
-hookSpeed = 300.0
+hookSpeed = 100
 hookVerticalSpeed = 0

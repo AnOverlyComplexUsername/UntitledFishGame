@@ -1,7 +1,7 @@
 extends Control
 #all slots
 @onready var invSlots : Array = $Panel/NinePatchRect/GridContainer.get_children()
-
+@onready var slot := preload("res://Scenes/UI/InvSlot.tscn")
 #selected details 
 @onready var displayInfoPanel := $Panel/DisplayPanel
 @onready var sellButton := $Panel/DisplayPanel/SellButton
@@ -15,8 +15,10 @@ var selectedSlot #stores data on which slot is currently selected
 func _ready():	
 	GameManager.fishAdded.connect(_fish_added)
 	GameManager.selectedFish.connect(_selected_fish)
+	Dialogic.signal_event.connect(_dialogic_signal_event)
 	displayInfoPanel.hide()
 	sellButton.hide()
+	_add_slots()
 	for fish in GameManager.fishInventory:
 		_add_item(fish)
 	self.hide()
@@ -35,6 +37,11 @@ func _reload_inv():
 	for fish in GameManager.fishInventory:
 		_add_item(fish)
 
+func _add_slots(): #adds slots up to inv limit
+	for i in range(GameManager.invSizeLimit - invSlots.size()):
+		get_node("Panel/NinePatchRect/GridContainer").add_child(slot.instantiate())
+	invSlots = $Panel/NinePatchRect/GridContainer.get_children()
+	
 func _add_item(fish : inventoryFish):
 	for i in range(invSlots.size()):
 		if !invSlots[i].currentItem: #if the slot has no item (null)
@@ -44,13 +51,13 @@ func _add_item(fish : inventoryFish):
 func _fish_added(fish : inventoryFish): #called externally when a fish is added
 	_add_item(fish)
 
-func _selected_fish(fish : inventoryFish, slot):
+func _selected_fish(fish : inventoryFish, curSlot):
 	if selectedSlot:
 		selectedSlot._toggle_select() #detoggles slot highlight
-		selectedSlot = slot
+		selectedSlot = curSlot
 		selectedSlot._toggle_select() #toggles new slot highlight
 	else:
-		selectedSlot = slot
+		selectedSlot = curSlot
 		selectedSlot._toggle_select()
 	
 	#resets and determins extra labels for fish
@@ -78,7 +85,8 @@ func _on_sell_button_pressed():
 		_reload_inv() #reloads inventory when things are sold so items move back
 		
 
-func _on_sell_menu_open_pressed():
-	self.visible = !self.visible
-	sellButton.show()
-	displayDesc.hide()
+func _dialogic_signal_event(argument : String):
+	if argument == "_open_sell":
+		self.visible = !self.visible
+		sellButton.show()
+		displayDesc.hide()

@@ -1,0 +1,5 @@
+shopNPC: Open shop?
+- Yes
+	[signal arg="_open_shop"]
+- No
+	shopNPC: cringe
