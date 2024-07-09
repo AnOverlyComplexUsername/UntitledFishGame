@@ -22,6 +22,10 @@ text = "Main Scene
 "
 
 [node name="FishingRodBuyMenu" parent="." instance=ExtResource("1_7gcji")]
+offset_left = 738.0
+offset_top = 89.0
+offset_right = 738.0
+offset_bottom = 89.0
 
 [node name="MoneyDisplay" parent="." instance=ExtResource("2_mw87n")]
 

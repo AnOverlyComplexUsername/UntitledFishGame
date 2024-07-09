@@ -16,10 +16,8 @@ script = ExtResource("1_3qabc")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 691.0
-offset_top = 82.0
-offset_right = 1007.0
-offset_bottom = 582.0
+offset_right = 316.0
+offset_bottom = 500.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Panel"]
 layout_mode = 0

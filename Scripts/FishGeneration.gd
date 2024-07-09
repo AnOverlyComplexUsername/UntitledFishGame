@@ -1,4 +1,4 @@
-extends Button
+extends Node
 
 signal fishData(rarity, size, variation)
 
@@ -53,7 +53,7 @@ func _create_fish(fishTemplates : Array[fishTemplate]) -> inventoryFish:
 	var chosenFish = fishTemplates[rng.randi_range(0,fishTemplates.size() - 1)]
 	return inventoryFish.new(chosenFish, fishSize, fishVariation, fishRarity)
 
-func _on_pressed():
+func _on_fishing_game_scene_start_game():
 	fishRarity = _process_RNG(fishRarities)
 	fishSize = _process_RNG(sizeClass)
 	fishVariation = _process_RNG(variation)
@@ -73,3 +73,6 @@ func _on_progress_bar_caught():
 			#fishChosen.emit(_create_fish(rareFish))
 		#"Legendary":
 			#fishChosen.emit(_create_fish(legendaryFish))
+
+
+

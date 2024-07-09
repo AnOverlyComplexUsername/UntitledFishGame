@@ -14,7 +14,7 @@
 
 [sub_resource type="Animation" id="Animation_af2e1"]
 resource_name = "bobbing"
-length = 0.5
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,13 +33,11 @@ _data = {
 "bobbing": SubResource("Animation_af2e1")
 }
 
-[node name="DockScene" type="Node2D" node_paths=PackedStringArray("bobTxt", "bobAni", "timer", "fishingBtn", "fishingAlert")]
+[node name="DockScene" type="Node2D" node_paths=PackedStringArray("bobTxt", "bobAni", "timer")]
 script = ExtResource("1_hef3q")
 bobTxt = NodePath("bob")
 bobAni = NodePath("BobbingAnimation")
 timer = NodePath("Timer")
-fishingBtn = NodePath("fishingInteract")
-fishingAlert = NodePath("TextureRect")
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(578, 290)
@@ -68,12 +66,6 @@ texture_normal = ExtResource("6_y1201")
 texture_hover = ExtResource("7_foo85")
 texture_click_mask = ExtResource("7_phj3t")
 metadata/_edit_use_anchors_ = true
-
-[node name="fishingInteract" type="TextureButton" parent="."]
-visible = false
-offset_left = 3.0
-offset_right = 1153.0
-offset_bottom = 651.0
 
 [node name="Fishing rod menu" type="Control" parent="."]
 visible = false
@@ -143,17 +135,8 @@ text = "To sell"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_left = 523.0
-offset_top = 157.0
-offset_right = 651.0
-offset_bottom = 372.0
-texture = ExtResource("11_owfes")
-
 [node name="bob" type="TextureRect" parent="."]
 visible = false
-modulate = Color(1, 1, 1, 0)
 offset_left = 523.0
 offset_top = 235.0
 offset_right = 651.0
@@ -167,7 +150,6 @@ libraries = {
 
 [connection signal="pressed" from="TextureButton" to="Fishing rod menu" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="fishingGameButton" to="." method="_on_fishing_game_button_pressed"]
-[connection signal="pressed" from="fishingInteract" to="." method="_on_texture_button_2_pressed"]
 [connection signal="pressed" from="Fishing rod menu/outOfBounds" to="Fishing rod menu" method="_on_out_of_bounds_pressed"]
 [connection signal="pressed" from="rodTPButton" to="." method="_on_rod_tp_button_pressed"]
 [connection signal="pressed" from="shopTPButton" to="." method="_on_shop_tp_button_pressed"]

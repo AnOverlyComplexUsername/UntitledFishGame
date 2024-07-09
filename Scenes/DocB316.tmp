@@ -14,7 +14,7 @@
 
 [sub_resource type="Animation" id="Animation_af2e1"]
 resource_name = "bobbing"
-length = 0.5
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -71,6 +71,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="fishingInteract" type="TextureButton" parent="."]
 visible = false
+anchors_preset = -1
 offset_left = 3.0
 offset_right = 1153.0
 offset_bottom = 651.0
@@ -143,14 +144,6 @@ text = "To sell"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_left = 523.0
-offset_top = 157.0
-offset_right = 651.0
-offset_bottom = 372.0
-texture = ExtResource("11_owfes")
-
 [node name="bob" type="TextureRect" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
@@ -158,6 +151,14 @@ offset_left = 523.0
 offset_top = 235.0
 offset_right = 651.0
 offset_bottom = 363.0
+texture = ExtResource("11_owfes")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_left = 523.0
+offset_top = 157.0
+offset_right = 651.0
+offset_bottom = 372.0
 texture = ExtResource("11_owfes")
 
 [node name="BobbingAnimation" type="AnimationPlayer" parent="."]

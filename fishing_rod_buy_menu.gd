@@ -16,7 +16,5 @@ func _dialogic_signal_event(argument : String):
 		self.visible = !self.visible
 		GameManager.updatePurchasable.emit()
 
-
-
 func _on_close_button_pressed():
 	self.visible = !self.visible
