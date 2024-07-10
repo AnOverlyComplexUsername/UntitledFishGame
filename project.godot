@@ -35,6 +35,10 @@ directories/dtl_directory={
 layout/style_list=[""]
 layout/default_style=""
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg")
