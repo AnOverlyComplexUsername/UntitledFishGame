@@ -1,4 +1,5 @@
 extends Node
+
 #global variable for stuff :3
 var fishInventory : Array[inventoryFish]
 var invSizeLimit : int = 10
@@ -18,6 +19,17 @@ signal moneyChange(amount : int )
 #fishing rod
 signal updateFishingRod(rod : fishingRod)
 signal addRodInv(rod : fishingRod)
+
+#save/load data here
+func save_data():
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var save_nodes = get_tree().get_nodes_in_group("Persist")
+
+func load_data():
+	if not FileAccess.file_exists("user://savegame.save"):
+		return # Error! We don't have a save to load.
+
+#when game runs
 func _ready():
 	self.fishAdded.connect(_fish_added)
 	self.moneyChange.connect(_money_change)

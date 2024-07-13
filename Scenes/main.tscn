@@ -12,12 +12,12 @@
 [node name="FishingGame" parent="." instance=ExtResource("2_grcja")]
 visible = false
 
-[node name="MoneyDisplay" parent="." instance=ExtResource("3_fo423")]
+[node name="MoneyDisplay" parent="." groups=["Persist"] instance=ExtResource("3_fo423")]
 offset_left = 3.0
 offset_right = -1149.0
 offset_bottom = -648.0
 
-[node name="FishInventory" parent="." instance=ExtResource("3_bnb2q")]
+[node name="FishInventory" parent="." groups=["Persist"] instance=ExtResource("3_bnb2q")]
 visible = false
 
 [connection signal="triggerFishingGame" from="DockScene" to="FishingGame" method="_on_dock_scene_trigger_fishing_game"]
