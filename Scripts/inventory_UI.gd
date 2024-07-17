@@ -30,28 +30,28 @@ func _process(_delta):
 		displayDesc.show()
 
 #inv is reloaded by setting all slots to null and then readding every item
-func _reload_inv():
+func _reload_inv() -> void:
 	for i in range(invSlots.size()):
 		invSlots[i].itemIcon.texture = null
 		invSlots[i].currentItem = null
 	for fish in GameManager.fishInventory:
 		_add_item(fish)
 
-func _add_slots(): #adds slots up to inv limit
+func _add_slots() -> void: #adds slots up to inv limit
 	for i in range(GameManager.invSizeLimit - invSlots.size()):
 		get_node("Panel/NinePatchRect/GridContainer").add_child(slot.instantiate())
 	invSlots = $Panel/NinePatchRect/GridContainer.get_children()
 	
-func _add_item(fish : inventoryFish):
+func _add_item(fish : inventoryFish) -> void:
 	for i in range(invSlots.size()):
 		if !invSlots[i].currentItem: #if the slot has no item (null)
 			invSlots[i].updateItem(fish)
 			break
 
-func _fish_added(fish : inventoryFish): #called externally when a fish is added
+func _fish_added(fish : inventoryFish) -> void: #called externally when a fish is added
 	_add_item(fish)
 
-func _selected_fish(fish : inventoryFish, curSlot):
+func _selected_fish(fish : inventoryFish, curSlot) -> void:
 	if selectedSlot:
 		selectedSlot._toggle_select() #detoggles slot highlight
 		selectedSlot = curSlot

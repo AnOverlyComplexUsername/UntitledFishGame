@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr5a337d45dfw"]
+
+[ext_resource type="Script" path="res://Scenes/UI/SaveFileButton.gd" id="1_j5rgc"]
+
+[node name="FileSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SaveFileButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 92.0
+offset_right = 352.0
+offset_bottom = 478.0
+text = "No File"
+script = ExtResource("1_j5rgc")
+
+[node name="SaveFileButton2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 88.0
+offset_right = 608.0
+offset_bottom = 474.0
+text = "No File"
+script = ExtResource("1_j5rgc")
+fileNum = 2
+
+[node name="SaveFileButton3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 709.0
+offset_top = 92.0
+offset_right = 866.0
+offset_bottom = 478.0
+text = "No File"
+script = ExtResource("1_j5rgc")
+fileNum = 3
+
+[connection signal="pressed" from="SaveFileButton" to="SaveFileButton" method="_on_pressed"]
+[connection signal="pressed" from="SaveFileButton2" to="SaveFileButton2" method="_on_pressed"]
+[connection signal="pressed" from="SaveFileButton3" to="SaveFileButton3" method="_on_pressed"]

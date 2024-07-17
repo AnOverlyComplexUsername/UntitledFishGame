@@ -7,8 +7,6 @@ func _ready():
 	moneyLabel.text = "$ " + str(GameManager.money) 
 	GameManager.moneyChange.connect(_money_change)
 
-
-
-func _money_change(_amount):
+func _money_change(_amount) -> void:
 	moneyLabel.text = "$ " + str(GameManager.money) 
 

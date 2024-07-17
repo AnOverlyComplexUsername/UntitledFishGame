@@ -11,7 +11,7 @@ func _ready():
 	itemIcon.visible = false
 
 #called in inv_UI script to load in fish
-func updateItem(fish : inventoryFish):
+func updateItem(fish : inventoryFish) -> void:
 	if fish == null: #checks if fish being passed is null
 		itemIcon.visible = false
 		print("item sold!")
@@ -20,7 +20,7 @@ func updateItem(fish : inventoryFish):
 		itemIcon.texture = fish.image
 	currentItem = fish
 
-func _toggle_select():
+func _toggle_select() -> void:
 	selectColor.visible = !selectColor.visible
 
 func _on_texture_button_pressed():

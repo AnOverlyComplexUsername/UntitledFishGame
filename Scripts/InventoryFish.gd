@@ -1,25 +1,26 @@
+extends Resource
 class_name inventoryFish
 
 #Cosmetic and gameplay info; rarity/size will effect strength/speed multipliers
-enum variation {Golden, Holographic, None}
-enum rarity {Common, Uncommon, Rare, Legendary, Mythic}
-enum sizeClass {Small, Average, Large} # subdivided into different multplier ranges chosen at random; 
+@export_enum("Golden", "Holographic", "None") var variation : String = "None"
+@export_enum("Common", "Uncommon", "Rare", "Legendary", "Mythic") var rarity : String = "Common"
+@export_enum("Small", "Average", "Large") var sizeClass : String = "Average" # subdivided into different multplier ranges chosen at random; 
 #will effect weight/length/sellprice/ and strength & speed 
 
 #saves what state, used for loading shaders and inventory sort
-var curVari : int
-var curRarity : int
-var curSize : int 
+@export var curVari : int
+@export var curRarity : int
+@export var curSize : int 
 
 #display Info after it's fished
-var sizeStr : String
-var variStr : String 
-var sellPrice : int 
-var image: Texture
-var name: String
-var desc: String
-var length: float
-var weight: float
+@export var sizeStr : String
+@export var variStr : String 
+@export var sellPrice : int 
+@export var image: Texture
+@export var name: String
+@export var desc: String
+@export var length: float
+@export var weight: float
 
 func _init(template : fishTemplate, s : String, v : String, r : String):
 	#check for rairty and calculate out price using rarity n stuff
@@ -30,40 +31,40 @@ func _init(template : fishTemplate, s : String, v : String, r : String):
 	match s:
 		"Small":
 			sizeMultplier = randf_range(0.5,1.0)
-			curSize = sizeClass.Small
+			curSize = 0
 		"Large": 
 			sizeMultplier = randf_range(1.5, 2.0)
-			curSize = sizeClass.Large
+			curSize = 2
 		_:
 			sizeMultplier = 1.0
-			curSize = sizeClass.Average
+			curSize = 1
 	sizeStr = s
 	#TODO: variation stuff TBA
 	match v: 
 		"Golden":
-			curVari = variation.Golden
+			curVari = 0
 			variMultiplier = 1.5
 		"Holographic":
-			curVari = variation.Holographic
+			curVari = 1
 			variMultiplier = 1.25
 		_:
-			curVari = variation.None
+			curVari = 2
 			variMultiplier = 1.0
 	variStr = v
 	#rarity stuff
 	match r:
 		"Common":
-			curRarity = rarity.Common
+			curRarity = 0
 		"Uncommon": 
-			curRarity = rarity.Uncommon
+			curRarity = 1
 		"Rare": 
-			curRarity = rarity.Rare
+			curRarity = 2
 		"Legendary":
-			curRarity = rarity.Legendary
+			curRarity = 3
 		"Mythic":
-			curRarity = rarity.Mythic
+			curRarity = 4
 		_:
-			curRarity = rarity.Common
+			curRarity = 5
 			
 	image = template.image
 	name = template.name

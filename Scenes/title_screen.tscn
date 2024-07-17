@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cr0f8aq5k2scy"]
+[gd_scene load_steps=3 format=3 uid="uid://cr0f8aq5k2scy"]
 
 [ext_resource type="Script" path="res://Scripts/title_screen.gd" id="1_u558u"]
+[ext_resource type="PackedScene" uid="uid://cr5a337d45dfw" path="res://Scenes/UI/File_Select.tscn" id="2_kskk7"]
 
-[node name="TitleScreen" type="Control"]
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("titleUI", "fileSelectUI")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,8 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u558u")
+titleUI = NodePath("TitleUI")
+fileSelectUI = NodePath("FileSelect")
 
-[node name="Label" type="Label" parent="."]
+[node name="TitleUI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="TitleUI"]
 layout_mode = 0
 offset_left = 362.0
 offset_top = 112.0
@@ -22,7 +30,7 @@ text = "Fishin :3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartButton" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="TitleUI"]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 370.0
@@ -31,5 +39,9 @@ offset_bottom = 432.0
 theme_override_font_sizes/font_size = 28
 text = "Start"
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="StartButton" to="." method="_on_button_pressed"]
+[node name="FileSelect" parent="." instance=ExtResource("2_kskk7")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="TitleUI/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TitleUI/StartButton" to="." method="_on_button_pressed"]

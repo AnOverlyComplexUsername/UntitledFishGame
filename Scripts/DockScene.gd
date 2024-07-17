@@ -64,3 +64,11 @@ func _on_texture_button_2_pressed(): #clicking function
 	fishingBtn.hide()
 	casted = false
 	bobTxt.hide()
+
+
+func _on_save_button_pressed():
+	GameManager.save_data()
+
+
+func _on_save_button_2_pressed():
+	get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
