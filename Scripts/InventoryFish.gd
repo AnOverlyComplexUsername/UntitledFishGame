@@ -1,10 +1,10 @@
-extends Resource
+#extends Resource
 class_name inventoryFish
 
 #Cosmetic and gameplay info; rarity/size will effect strength/speed multipliers
-@export_enum("Golden", "Holographic", "None") var variation : String = "None"
-@export_enum("Common", "Uncommon", "Rare", "Legendary", "Mythic") var rarity : String = "Common"
-@export_enum("Small", "Average", "Large") var sizeClass : String = "Average" # subdivided into different multplier ranges chosen at random; 
+#enum variation {Golden, Holographic, None} 
+#enum rarity {Common, Uncommon, Rare, Legendary, Mythic} 
+#enum sizeClass { Small, Average, Large}  # subdivided into different multplier ranges chosen at random; 
 #will effect weight/length/sellprice/ and strength & speed 
 
 #saves what state, used for loading shaders and inventory sort

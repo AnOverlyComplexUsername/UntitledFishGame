@@ -43,13 +43,15 @@ func save_data() -> void:
 	print(playerData.fishInventory)
 
 func load_data(path : String) -> void:
+	print(playerData.fishInventory)
 	playerData = SafeResourceLoader.load(path)
-	fishInventory = playerData.fishInventory
+	print(playerData.fishInventory)
+#	fishInventory = playerData.fishInventory
 	invSizeLimit = playerData.invSizeLimit
 	rodInventory = playerData.rodInventory
 	curRod = playerData.curRod
 	money = playerData.money
-	print(fishInventory)
+	
 	
 #when game runs
 func _ready():

@@ -8,7 +8,7 @@ extends Node2D
 signal triggerFishingGame
 var bobbingNum : int = 0
 var delayTime : float = 0.5 #time before the first opportunity a fish can bite
-var minVal : float = snappedf(10/3, 0.01) #min val 10 s total / 3 bobs
+var minVal : float = snappedf(10/3.0, 0.01) #min val 10 s total / 3 bobs
 var maxVal : float = 10 #max val 30 s total / 3 bobs
 var maxBobs = 2 #normally 3
 var casted = false
