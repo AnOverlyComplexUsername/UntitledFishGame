@@ -22,7 +22,7 @@ func _ready():
 		if purchasableRod in GameManager.rodInventory:
 			purchased = true #checks if rod is already purchased
 
-func _update_purchasable(): #updates button state 
+func _update_purchasable() -> void: #updates button state 
 	if purchased:
 		if GameManager.curRod != purchasableRod: 
 			purchaseButton.text = "Equip"

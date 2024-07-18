@@ -12,18 +12,18 @@ var fishSize : String
 var fishVariation : String
 #TODO: add a layer of RNG above this for junk/treasure/fish catch
 
-var fishRarities = { "Common" : 1000, 
+const fishRarities = { "Common" : 1000, 
 				 "Uncommon": 500,
 				 "Rare" : 250,
 				 "Legendary" : 50,
 				 "Mythic" : 1 }
 
-var sizeClass = { "Average": 80,
+const sizeClass = { "Average": 80,
 				"Small" : 15, 
 				 "Large" : 10,}
 
 #default rates: 90,20,5
-var variation = {"None" : 90, 
+const variation = {"None" : 90, 
 				"Holographic" : 20,
 				"Golden" : 5}
 
@@ -51,7 +51,58 @@ func _process_RNG(d : Dictionary ):
 func _create_fish(fishTemplates : Array[fishTemplate]) -> inventoryFish:
 	rng.randomize()
 	var chosenFish = fishTemplates[rng.randi_range(0,fishTemplates.size() - 1)]
-	return inventoryFish.new(chosenFish, fishSize, fishVariation, fishRarity)
+	var newFish = inventoryFish.new()
+	var sizeMultplier : float = 1.0
+	var variMultiplier : float = 1.0
+	match fishSize:
+		"Small":
+			sizeMultplier = randf_range(0.5,1.0)
+			newFish.curSize = 0
+		"Large": 
+			sizeMultplier = randf_range(1.5, 2.0)
+			newFish.curSize = 2
+		_:
+			sizeMultplier = 1.0
+			newFish.curSize = 1
+	newFish.sizeStr = fishSize
+	
+	#TODO: variation stuff TBA
+	match fishVariation: 
+		"Golden":
+			newFish.curVari = 0
+			variMultiplier = 1.5
+		"Holographic":
+			newFish.curVari = 1
+			variMultiplier = 1.25
+		_:
+			newFish.curVari = 2
+			variMultiplier = 1.0
+	newFish.variStr = fishVariation
+	
+	#rarity stuff
+	match fishRarity:
+		"Common":
+			newFish.curRarity = 0
+		"Uncommon": 
+			newFish.curRarity = 1
+		"Rare": 
+			newFish.curRarity = 2
+		"Legendary":
+			newFish.curRarity = 3
+		"Mythic":
+			newFish.curRarity = 4
+		_:
+			newFish.curRarity = 5
+
+
+	newFish.image = chosenFish.image
+	newFish.name = chosenFish.name
+	newFish.desc = chosenFish.desc
+	newFish.sellPrice = int(chosenFish.sellPrice * sizeMultplier * variMultiplier)
+	newFish.length = snappedf(randf_range(chosenFish.minLength, chosenFish.maxLength) * sizeMultplier, 0.01)
+	newFish.weight = snappedf(randf_range(chosenFish.minWeight, chosenFish.maxWeight) * sizeMultplier, 0.01)
+	return newFish
+
 
 func _on_fishing_game_scene_start_game():
 	fishRarity = _process_RNG(fishRarities)
