@@ -1,5 +1,7 @@
 extends Control
 
+@onready 
+
 func _ready():
 	self.hide()
 
