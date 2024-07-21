@@ -1,15 +1,31 @@
 extends Control
 
-@onready var iconTxt := $Panel/Icon
-@onready var descLabel := $Panel/Desc
-@onready var nameLabel := $Panel/Name
+@export var iconTxt : TextureRect
+@export var descLabel : Label
+@export var nameLabel : Label
+@export var equipButton : Button
+var rodSlot : fishingRod 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	GameManager.updatePurchasable.connect(_update_purchasable)
+	
+func _update_purchasable():
+	if rodSlot == GameManager.curRod:
+		equipButton.text = "Equipped!"
+		equipButton.disabled = true
+	else:
+		equipButton.text = "Equip!"
+		equipButton.disabled = false
+		
+func updateMenu(rod : fishingRod):
+	iconTxt.texture = rod.shopIcon
+	descLabel.text = rod.desc
+	nameLabel.text = rod.name
+	print(rod.name)
+	rodSlot = rod
+	_update_purchasable()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_equip_button_pressed():
+	GameManager._update_rod(rodSlot)
+	GameManager.updatePurchasable.emit()
+	

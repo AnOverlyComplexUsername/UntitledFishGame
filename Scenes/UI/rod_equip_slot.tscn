@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dnpd4t20e6ykk" path="res://Assests/icon.svg" id="1_jgmkj"]
 [ext_resource type="Script" path="res://Scenes/UI/rod_equip_slot.gd" id="1_qnvyi"]
 
-[node name="rodEquipSlot" type="Control"]
+[node name="rodEquipSlot" type="Control" node_paths=PackedStringArray("iconTxt", "descLabel", "nameLabel", "equipButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qnvyi")
+iconTxt = NodePath("Panel/Icon")
+descLabel = NodePath("Panel/Desc")
+nameLabel = NodePath("Panel/Name")
+equipButton = NodePath("Panel/EquipButton")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -56,3 +60,5 @@ offset_top = 247.0
 offset_right = 113.0
 offset_bottom = 282.0
 text = "Equip"
+
+[connection signal="pressed" from="Panel/EquipButton" to="." method="_on_equip_button_pressed"]

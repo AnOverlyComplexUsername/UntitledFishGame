@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://drnny7piu6sab"]
+[gd_scene load_steps=14 format=3 uid="uid://drnny7piu6sab"]
 
 [ext_resource type="Texture2D" uid="uid://cicf7e5ph225v" path="res://Assests/IMG_20240612_163431343.jpg" id="1_0fmu7"]
 [ext_resource type="Script" path="res://Scripts/DockScene.gd" id="1_hef3q"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b180g77soao58" path="res://Assests/fishingHook.png" id="6_y1201"]
 [ext_resource type="Texture2D" uid="uid://7eegp823xw4g" path="res://Assests/fishingHookSelected.png" id="7_foo85"]
 [ext_resource type="BitMap" uid="uid://c2mifbhrkqrhn" path="res://Assests/fishingHookSelectedBitmap.png" id="7_phj3t"]
+[ext_resource type="PackedScene" uid="uid://dh6j3ea3ce5jh" path="res://Scenes/UI/rod_equip_slot.tscn" id="10_lmspx"]
 [ext_resource type="Texture2D" uid="uid://dnpd4t20e6ykk" path="res://Assests/icon.svg" id="11_owfes"]
 
 [sub_resource type="Animation" id="Animation_af2e1"]
@@ -129,6 +130,9 @@ offset_bottom = 417.0
 [node name="VBoxContainer" type="HBoxContainer" parent="FishingRodMenu/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/separation = 180
+
+[node name="rodEquipSlot" parent="FishingRodMenu/ScrollContainer/VBoxContainer" instance=ExtResource("10_lmspx")]
+layout_mode = 2
 
 [node name="rodTPButton" type="Button" parent="."]
 offset_left = 22.0
