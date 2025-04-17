@@ -9,4 +9,3 @@ func _ready():
 
 func _money_change(_amount) -> void:
 	moneyLabel.text = "$ " + str(GameManager.money) 
-

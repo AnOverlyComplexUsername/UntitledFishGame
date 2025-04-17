@@ -12,4 +12,3 @@ func _on_sell_button_2_pressed():
 
 func _on_sell_menu_open_pressed():
 	Dialogic.start("shopKeeper")
-
